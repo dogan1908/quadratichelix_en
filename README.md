@@ -4,7 +4,7 @@
 
 *Dogan Balban, 2026*
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo..svg)](https://doi.org/10.5281/zenodo.)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18905795.svg)](https://doi.org/10.5281/zenodo.18905795)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
 ---
@@ -118,8 +118,8 @@ This work is licensed under the
   title        = {From the Quadratic Sequence to the Conical Helix},
   year         = {2026},
   publisher    = {Zenodo},
-  doi          = {10.5281/zenodo.18819019},
-  url          = {https://doi.org/10.5281/zenodo.}
+  doi          = {10.5281/zenodo.18905795},
+  url          = {https://doi.org/10.5281/zenodo.18905795}
 }
 ```
 
