@@ -1,0 +1,207 @@
+\chapter{Arc Length Comparison: Parabola vs.\ Helix}\label{sec:beispiele}
+
+\section{Principle of the Comparison}
+
+The quadratic curve $k(n) = \frac{1}{6}(2n^2 + 3n + 1)$ was geometrically
+wound onto a cone, forming the helix $\gamma(\theta)$.
+The central question is: How closely do the arc lengths agree?
+
+
+\textbf{Arc length of the parabola} between $n = n_1$ and $n = n_2$:
+\[
+L_{\text{Parabola}} = \int_{n_1}^{n_2} \sqrt{1 + \left(\frac{dk}{dn}\right)^2}\, dn
+= \int_{n_1}^{n_2} \frac{1}{6}\sqrt{36 + (4n+3)^2}\, dn.
+\]
+
+\textbf{Arc length of the helix} with direct $\theta$-parametrization:
+\[
+\gamma(\theta) = \begin{pmatrix}
+\frac{6}{\pi^2}\theta\cos\theta\\[4pt]
+\frac{6}{\pi^2}\theta\sin\theta\\[4pt]
+-\frac{3}{4} + \frac{3}{\pi}\theta
+\end{pmatrix},
+\qquad
+\theta_n = \frac{\pi}{3}n + \frac{\pi}{4}.
+\]
+
+The derivative yields:
+\[
+\|\gamma'(\theta)\| = \sqrt{\left(\frac{6}{\pi^2}\right)^2(1 + \theta^2)
++ \left(\frac{3}{\pi}\right)^2}.
+\]
+
+The arc length thus follows as:
+\[
+L_{\text{Helix}} = \int_{\theta_{n_1}}^{\theta_{n_2}} \|\gamma'(\theta)\|\, d\theta.
+\]
+
+\section{Numerical Examples}
+
+All arc lengths were computed numerically to high precision.
+As a detailed example, the first step
+($n = 1 \to n = 5$, major step / gap zone) is worked out step by step;
+the remaining results are summarized in
+Table~\ref{tab:bogenlaengenvergleich}.
+
+% ═══════════════════════════════════════════════════════════════════════
+\subsection{Detailed Example: \texorpdfstring{$n = 1 \rightarrow n = 5$}{n = 1 → n = 5}
+ (Major Step)}
+% ═══════════════════════════════════════════════════════════════════════
+
+\textbf{Step 1 -- Determine parameters:}
+\[
+n_1 = 1,\quad n_2 = 5,\quad \Delta n = 4,\quad
+\theta_1 = \frac{\pi}{3}\cdot 1 + \frac{\pi}{4} = 1{,}8326,\quad
+\theta_2 = \frac{\pi}{3}\cdot 5 + \frac{\pi}{4} = 6{,}0214.
+\]
+
+\textbf{Step 2 -- Arc length of the parabola:}
+\[
+L_{\text{Parabola}}
+= \int_{1}^{5} \frac{1}{6}\sqrt{36 + (4n+3)^2}\, dn
+= \boxed{10{,}839409}.
+\]
+
+\textbf{Step 3 -- Arc length of the helix:}
+\[
+L_{\text{Helix}}
+= \int_{1{,}8326}^{6{,}0214}
+  \sqrt{\left(\frac{6}{\pi^2}\right)^2(1 + \theta^2)
+  + \left(\frac{3}{\pi}\right)^2}\, d\theta
+= \boxed{11{,}155199}.
+\]
+
+\textbf{Step 4 -- Relative deviation:}
+\[
+\varepsilon = \frac{L_{\text{Helix}} - L_{\text{Parabola}}}{L_{\text{Parabola}}}
+= \frac{0{,}316}{10{,}839} = \boxed{+2{,}91\,\%}.
+\]
+
+\begin{remark}
+The helix is \emph{longer} than the parabola, since the
+spiral motion in the $(x,y)$-plane (especially at small
+$\theta$) generates additional path length.
+\end{remark}
+
+% ═══════════════════════════════════════════════════════════════════════
+\subsection{Comparison Table}
+% ═══════════════════════════════════════════════════════════════════════
+
+\begin{table}[H]
+\centering
+\caption{Arc length comparison: Parabola vs.\ Helix
+  (exact $\theta$-parametrization).}
+\label{tab:bogenlaengenvergleich}
+\begin{tabular}{clccccr}
+\toprule
+No. & $n_1 \to n_2$ & Type
+  & $L_{\text{Parabola}}$ & $L_{\text{Helix}}$
+  & Diff. & Dev. \\
+\midrule
+1 & $1 \to 5$   & Major
+  & 10{,}839409 & 11{,}155199 & $+0{,}316$ & $+2{,}91\,\%$ \\
+2 & $5 \to 7$   & Minor
+  & 9{,}221075  & 9{,}309137  & $+0{,}088$ & $+0{,}96\,\%$ \\
+3 & $11 \to 13$ & Minor
+  & 17{,}117480 & 17{,}164862 & $+0{,}047$ & $+0{,}28\,\%$ \\
+4 & $17 \to 19$ & Minor
+  & 25{,}079948 & 25{,}112276 & $+0{,}032$ & $+0{,}13\,\%$ \\
+5 & $23 \to 25$ & Minor
+  & 33{,}060583 & 33{,}085105 & $+0{,}025$ & $+0{,}07\,\%$ \\
+6 & $35 \to 37$ & Minor
+  & 49{,}040809 & 49{,}057339 & $+0{,}017$ & $+0{,}03\,\%$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ═══════════════════════════════════════════════════════════════════════
+\section{Unified Representation via the Universal Quantity \texorpdfstring{$Q$}{Q}}
+% ═══════════════════════════════════════════════════════════════════════
+
+The convergence of the arc lengths can be explained analytically by
+expressing both integrals in terms of the universal quantity
+$Q(k) = \sqrt{48k+1} = 4n+3$. With $dQ = 4\,dn$ and
+$\theta = \pi Q/12$, hence $d\theta = (\pi/12)\,dQ$, we obtain:
+
+\begin{theorem}[$Q$-Parametrization of the Arc Lengths]\label{satz:q-bogenlaenge}
+The arc length elements of the parabola $k(n)$ and the conical helix can be
+expressed uniformly as
+\begin{equation}\label{eq:ds-einheitlich}
+  ds = \frac{1}{24}\sqrt{Q^2 + C}\; dQ
+\end{equation}
+where
+\[
+  C_{\mathrm{Parabola}} = 36,
+  \qquad
+  C_{\mathrm{Helix}} = 36 + \frac{144}{\pi^2} \approx 50{,}59.
+\]
+\end{theorem}
+
+\begin{proof}
+\textbf{Parabola.}\; The arc length element of the curve $(n, k(n))$ is
+$ds = \sqrt{1 + k'(n)^2}\,dn$ with $k'(n) = (4n+3)/6$.
+Substituting $Q = 4n+3$, $dn = dQ/4$:
+\[
+  ds = \sqrt{1 + \frac{Q^2}{36}}\;\frac{dQ}{4}
+     = \frac{1}{4}\cdot\frac{\sqrt{36 + Q^2}}{6}\;dQ
+     = \frac{1}{24}\sqrt{Q^2 + 36}\;dQ.
+\]
+
+\textbf{Helix.}\; With $a = 6/\pi^2$, $c_1 = 3/\pi$, and
+$\theta = \pi Q/12$, we have $d\theta = (\pi/12)\,dQ$. The arc length element is
+$ds = \sqrt{a^2(1+\theta^2) + c_1^2}\,d\theta$. Substituting
+$\theta = \pi Q/12$:
+\begin{align*}
+  a^2(1+\theta^2) + c_1^2
+  &= \frac{36}{\pi^4}\Bigl(1 + \frac{\pi^2 Q^2}{144}\Bigr) + \frac{9}{\pi^2}\\
+  &= \frac{36}{\pi^4} + \frac{Q^2}{4\pi^2} + \frac{9}{\pi^2}
+   = \frac{1}{4\pi^2}\Bigl(Q^2 + 36 + \frac{144}{\pi^2}\Bigr).
+\end{align*}
+With $d\theta = (\pi/12)\,dQ$ it follows that:
+\[
+  ds = \frac{1}{2\pi}\sqrt{Q^2 + 36 + \frac{144}{\pi^2}}
+       \cdot \frac{\pi}{12}\,dQ
+     = \frac{1}{24}\sqrt{Q^2 + 36 + \frac{144}{\pi^2}}\;dQ.
+     \qedhere
+\]
+\end{proof}
+
+\begin{remark}[Geometric Interpretation]
+The difference $C_{\mathrm{Helix}} - C_{\mathrm{Parabola}} = 144/\pi^2
+\approx 14{,}59$ is the exact contribution of the spiral motion in the
+$(x,y)$-plane. For $Q \to \infty$, the term $Q^2$ dominates in both cases,
+and the ratio of the arc length elements converges:
+\[
+  \frac{ds_{\mathrm{Helix}}}{ds_{\mathrm{Parabola}}}
+  = \sqrt{\frac{Q^2 + 36 + 144/\pi^2}{Q^2 + 36}}
+  \;\xrightarrow{Q\to\infty}\; 1.
+\]
+This explains the convergence $\varepsilon \to 0$ observed in
+Table~\ref{tab:bogenlaengenvergleich} analytically, not merely
+numerically.
+\end{remark}
+
+% ═══════════════════════════════════════════════════════════════════════
+\section{Interpretation of the Results}
+% ═══════════════════════════════════════════════════════════════════════
+
+\begin{proposition}[Asymptotic Arc Length Convergence]
+\label{prop:konvergenz}
+The helix arc length is consistently \emph{longer} than the arc length of the
+corresponding parabolic segments, with the relative difference
+converging monotonically to zero:
+\[
+\frac{L_{\mathrm{Helix}}(n, n+2) - L_{\mathrm{Parabola}}(n, n+2)}
+{L_{\mathrm{Parabola}}(n, n+2)}
+\xrightarrow{n \to \infty} 0.
+\]
+This follows directly from the unified $Q$-representation
+(Theorem~\ref{satz:q-bogenlaenge}), since $C_{\mathrm{Helix}}/Q^2 \to 0$
+and $C_{\mathrm{Parabola}}/Q^2 \to 0$ as $Q \to \infty$.
+\end{proposition}
+
+\begin{corollary}[Practical Accuracy]
+For all primes $p > 11$ (corresponding to $n \ge 11$), the deviation
+lies below $0{,}3\,\%$. For applications in the visualization of prime number distributions,
+this accuracy is more than sufficient.
+\end{corollary}

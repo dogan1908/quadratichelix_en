@@ -1,0 +1,67 @@
+\chapter{Arc-Length Integral of the Spiral}\label{sec:bogenlaenge}
+
+\section{Arc-Length Element}
+
+For a parametrised curve $(x(p), y(p))$ the arc-length element is
+\begin{equation}
+ds = \sqrt{\left(\frac{dx}{dp}\right)^2 + \left(\frac{dy}{dp}\right)^2}\, dp.
+\end{equation}
+
+Applying the product rule yields:
+\begin{equation}
+\begin{aligned}
+\frac{dx}{dp} &= \frac{dr}{dp}\cos(\theta)
+               - r\sin(\theta)\frac{d\theta}{dp}, \\[6pt]
+\frac{dy}{dp} &= \frac{dr}{dp}\sin(\theta)
+               + r\cos(\theta)\frac{d\theta}{dp}.
+\end{aligned}
+\end{equation}
+
+After expanding, the cross terms cancel:
+\begin{equation}
+\left(\frac{dx}{dp}\right)^2
++ \left(\frac{dy}{dp}\right)^2
+= \left(\frac{dr}{dp}\right)^2
++ r^2\left(\frac{d\theta}{dp}\right)^2.
+\end{equation}
+
+\section{Computation of the Terms}
+
+\subsection*{Radial Term}
+\begin{align}
+\left(\frac{dr}{dp}\right)^2
+= \left(\frac{\sqrt{3}}{\pi\sqrt{p}}\right)^2
+= \frac{3}{\pi^2 p}.
+\end{align}
+
+\subsection*{Angular Term}
+\begin{align}
+r^2\left(\frac{d\theta}{dp}\right)^2
+&= \left[\frac{6}{\pi\sqrt{3}}\sqrt{p}\right]^2
+   \cdot
+   \left[\frac{\pi}{2\sqrt{3}\sqrt{p}}\right]^2 \\[4pt]
+&= \frac{36p}{3\pi^2}
+   \cdot
+   \frac{\pi^2}{12p} \\[4pt]
+&= 1.
+\end{align}
+
+\subsection*{Total Speed}
+This gives:
+\begin{equation}
+\left(\frac{dx}{dp}\right)^2
++ \left(\frac{dy}{dp}\right)^2
+= \frac{3}{\pi^2 p} + 1
+= \frac{\frac{3}{p} + \pi^2}{\pi^2}.
+\end{equation}
+
+\section{Final Form of the Arc-Length Integral}
+
+\begin{theorem}[Arc-length integral]
+\begin{equation}
+\boxed{
+L = \int_{p_1}^{p_2}
+\frac{1}{\pi}\sqrt{\frac{3}{p} + \pi^2}\, dp
+}
+\end{equation}
+\end{theorem}

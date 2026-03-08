@@ -1,0 +1,254 @@
+\chapter{Formula Collection}
+
+This section provides a compact overview of all central formulae of this work.
+
+% ============================================================
+\section{Quadratic Sequence}
+
+\textbf{Main function:}
+\begin{equation}
+k(n) = \frac{1}{6}(2n^2 + 3n + 1)
+\end{equation}
+
+\textbf{Congruence condition:}
+\begin{equation}
+k(n) \in \mathbb{Z}
+\quad\Longleftrightarrow\quad
+n \equiv 1,5 \pmod{6}
+\end{equation}
+
+\textbf{$y$-intercept:}
+\begin{equation}
+k(0) = \frac{1}{6}
+\end{equation}
+
+% ============================================================
+\section{Difference Sequence}
+
+\textbf{Generator function} (Theorem~5.4, Ch.~\ref{sec:spirale}):
+\begin{equation}
+a_k = \frac{1}{2}\bigl[(12k+3) + (-1)^{k+1}(4k+1)\bigr], \qquad k \geq 1.
+\end{equation}
+The sequence begins with $a_1 = 10$ (major), $a_2 = 9$ (minor), $a_3 = 26$, \ldots
+
+\textbf{Major steps} (odd $k = 2m-1$):
+\begin{equation}
+a_{2m-1} = \Delta_{\mathrm{Major}}(m) = 16m - 6
+\end{equation}
+
+\textbf{Minor steps} (even $k = 2m$):
+\begin{equation}
+a_{2m} = \Delta_{\mathrm{Minor}}(m) = 8m + 1
+\end{equation}
+
+% ============================================================
+\section{Circles and Radii}
+
+\textbf{Circle circumferences:}
+\begin{equation}
+U_m = a_{2m-1} + a_{2m} = 24m - 5
+\end{equation}
+
+\textbf{Constant difference:}
+\begin{equation}
+\Delta U = 24
+\end{equation}
+
+\textbf{Radius sequence:}
+\begin{equation}
+R_m = \frac{U_m}{2\pi} = \frac{24m - 5}{2\pi}
+\end{equation}
+
+\textbf{Radial difference (key result):}
+\begin{equation}
+\boxed{
+\Delta R = \frac{12}{\pi}
+= 3.819718634205\ldots
+}
+\end{equation}
+
+% ============================================================
+\section{Archimedean Spiral}
+
+\textbf{Standard form:}
+\begin{equation}
+r(\theta) = a\theta,
+\qquad
+a = \frac{6}{\pi^2}
+\end{equation}
+
+\textbf{Spiral equation:}
+\begin{equation}
+\boxed{
+r(\theta) = \frac{6}{\pi^2}\theta
+}
+\end{equation}
+
+\textbf{Connection to the Basel problem:}
+\begin{equation}
+a = \frac{6}{\pi^2}
+= \frac{1}{\zeta(2)},
+\qquad
+\zeta(2) = \sum_{n=1}^{\infty}\frac{1}{n^2} = \frac{\pi^2}{6}
+\end{equation}
+
+% ============================================================
+\section{Simplified Parametrisation}
+
+\textbf{Polar form with parameter $p$:}
+\begin{equation}
+\boxed{
+\begin{aligned}
+r(p) &= \frac{6}{\pi\sqrt{3}}\sqrt{p}, \\[4pt]
+\theta(p) &= \frac{\pi}{\sqrt{3}}\sqrt{p}
+\end{aligned}
+}
+\end{equation}
+
+\textbf{Cartesian coordinates:}
+\begin{equation}
+\begin{aligned}
+x(p) &= \frac{6}{\pi\sqrt{3}}\sqrt{p}
+       \cos\!\left(\frac{\pi}{\sqrt{3}}\sqrt{p}\right), \\[4pt]
+y(p) &= \frac{6}{\pi\sqrt{3}}\sqrt{p}
+       \sin\!\left(\frac{\pi}{\sqrt{3}}\sqrt{p}\right)
+\end{aligned}
+\end{equation}
+
+\textbf{Derivatives:}
+\begin{equation}
+\begin{aligned}
+\frac{dr}{dp} &= \frac{\sqrt{3}}{\pi\sqrt{p}}, \\[4pt]
+\frac{d\theta}{dp} &= \frac{\pi}{2\sqrt{3}\sqrt{p}}
+\end{aligned}
+\end{equation}
+
+% ============================================================
+\section{Arc-Length Integral}
+
+\textbf{Exact form:}
+\begin{equation}
+\boxed{
+L = \int_{p_1}^{p_2}
+\frac{1}{\pi}\sqrt{\frac{3}{p} + \pi^2}\, dp
+}
+\end{equation}
+
+\textbf{Alternative form:}
+\begin{equation}
+L = \int_{p_1}^{p_2}
+\sqrt{1 + \frac{3}{\pi^2 p}}\, dp
+\end{equation}
+
+\textbf{Taylor approximation:}
+\begin{equation}
+\boxed{
+L \approx (p_2 - p_1)
++ \frac{3}{2\pi^2}\ln\!\left(\frac{p_2}{p_1}\right)
++ \frac{9}{8\pi^4}\left(\frac{1}{p_1} - \frac{1}{p_2}\right)
+}
+\end{equation}
+
+\textbf{Coefficients:}
+\begin{equation}
+\begin{aligned}
+\frac{3}{2\pi^2} &= 0.151981775464\ldots, \\[4pt]
+\frac{9}{8\pi^4} &= 0.011549230037\ldots
+\end{aligned}
+\end{equation}
+
+% ============================================================
+\section{Conical Helix}
+
+\textbf{Cone equation:}
+\begin{equation}
+z = -\frac{3}{4} + \frac{\pi}{2}r
+\end{equation}
+
+\textbf{Height function:}
+\begin{equation}
+z(\theta) = -\frac{3}{4} + \frac{3}{\pi}\theta
+\end{equation}
+
+\textbf{Half-angle:}
+\begin{equation}
+\tan(\alpha) = \frac{2}{\pi}
+\quad\Rightarrow\quad
+\boxed{
+\alpha = \arctan\!\left(\frac{2}{\pi}\right)
+= 32.481636590530^\circ
+}
+\end{equation}
+
+\textbf{Helix parametrisation:}
+\begin{equation}
+\boxed{
+\gamma(\theta) =
+\begin{pmatrix}
+\dfrac{6}{\pi^2}\theta \cos\theta \\[6pt]
+\dfrac{6}{\pi^2}\theta \sin\theta \\[6pt]
+-\dfrac{3}{4} + \dfrac{3}{\pi}\theta
+\end{pmatrix}
+}
+\end{equation}
+
+\textbf{Integer points:}
+\begin{equation}
+\theta_n = \frac{\pi}{3}n + \frac{\pi}{4}
+\qquad (n \equiv 1,5 \pmod{6})
+\end{equation}
+
+\textbf{Tangent vector:}
+\begin{equation}
+\gamma'(\theta) =
+\begin{pmatrix}
+\dfrac{6}{\pi^2}(\cos\theta - \theta\sin\theta) \\[6pt]
+\dfrac{6}{\pi^2}(\sin\theta + \theta\cos\theta) \\[6pt]
+\dfrac{3}{\pi}
+\end{pmatrix}
+\end{equation}
+
+\textbf{Planar curvature (approximation):}
+\begin{equation}
+\kappa_{\mathrm{2D}}(\theta)
+= \frac{\theta^2 + 2}{a\,(\theta^2 + 1)^{3/2}},
+\qquad
+a = \frac{6}{\pi^2}
+\end{equation}
+
+\textbf{Exact 3D curvature and torsion} (Theorem~\ref{thm:3d-curvature-torsion}):
+\begin{align}
+\kappa_{\mathrm{3D}}(\theta)
+  &= \frac{a\,\sqrt{\,c_1^2(\theta^2+4) + a^2(\theta^2+2)^2\,}}
+          {\bigl(a^2(1+\theta^2) + c_1^2\bigr)^{3/2}},\\[4pt]
+\tau(\theta)
+  &= \frac{c_1\,(\theta^2 + 6)}
+          {c_1^2\,(\theta^2+4) + a^2\,(\theta^2+2)^2},
+\qquad c_1 = \frac{3}{\pi}.
+\end{align}
+
+\clearpage
+
+% ============================================================
+\section{Numerical Constants}
+
+\begin{table}[h]
+\centering
+\caption{Important constants (15 decimal places)}
+\begin{tabular}{lcl}
+\toprule
+\textbf{Constant} & \textbf{Value} & \textbf{Meaning} \\
+\midrule
+$\pi$ & 3.141592653589793 & Circle constant \\
+$\pi^2$ & 9.869604401089358 & \\
+$\sqrt{3}$ & 1.732050807568877 & \\
+$\dfrac{6}{\pi^2}$ & 0.607927101854027 & Spiral parameter \\
+$\dfrac{12}{\pi}$ & 3.819718634205488 & Radial difference \\
+$\dfrac{6}{\pi\sqrt{3}}$ & 1.909859317102744 & Radius factor \\
+$\dfrac{\pi}{\sqrt{3}}$ & 1.813799364234218 & Angular factor \\
+$\dfrac{3}{2\pi^2}$ & 0.151981775464066 & Taylor coefficient 1 \\
+$\dfrac{9}{8\pi^4}$ & 0.011549230036520 & Taylor coefficient 2 \\
+$\arctan(\frac{2}{\pi})$ & $32.481636590530^\circ$ & Cone half-angle \\
+\bottomrule
+\end{tabular}
+\end{table}

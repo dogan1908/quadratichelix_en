@@ -1,0 +1,346 @@
+\chapter{Geometry of the Cone Generators: Planes, Angles, and Growth}
+\label{sec:kegelstrahlen}
+
+\section{Overview}
+
+The integer points of the sequence $k(n)$ lie on discrete
+generators of the cone. Every two adjacent generators span a
+triangular face whose position in space is completely determined
+by the cone parameters. In this chapter we derive the plane equation,
+the tilt angle, the angles between the generators, and the
+growth rate of the radii. As a concrete example, the triangular
+area at $n = 19$ is computed.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Fundamentals: Generators of the Cone}
+% ─────────────────────────────────────────────────────────────────────────────
+
+The cone is defined by the equation
+\[
+  z = -\frac{3}{4} + \frac{\pi}{2}\,r
+\]
+with apex at the point $P_0 = (0, 0, -\tfrac{3}{4})$.
+A generator at azimuthal angle $\varphi$ runs from $P_0$ in the direction
+\[
+  \vec{v}(\varphi)
+  = \begin{pmatrix}\cos\varphi\\ \sin\varphi\\ \pi/2\end{pmatrix}.
+\]
+The factor $\pi/2$ in the $z$-component follows directly from the
+cone slope $dz/dr = \pi/2$.
+
+The length of this direction vector (per unit $\Delta r = 1$) is:
+\[
+  |\vec{v}| = \sqrt{1^2 + \left(\frac{\pi}{2}\right)^2}
+            = \sqrt{1 + \frac{\pi^2}{4}}
+            \approx 1.86209589.
+\]
+
+\subsection*{Integer Points and Their Radii}
+
+At height $z = n$ the point lies on the generator at radius
+\[
+  r_n = \frac{z + \tfrac{3}{4}}{\pi/2}
+      = \frac{2}{\pi}\!\left(n + \frac{3}{4}\right)
+      = \frac{2n}{\pi} + \frac{3}{2\pi}.
+\]
+The radius grows \emph{linearly} in $n$ at the rate
+
+\begin{equation}\label{eq:wachstumsrate}
+  \frac{dr_n}{dn} = \frac{2}{\pi} \approx 0.63661977.
+\end{equation}
+
+The following table shows the radii for the first integer
+indices $n \equiv 1, 5 \pmod{6}$:
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\caption{Radii $r_n = \tfrac{2}{\pi}n + \tfrac{3}{2\pi}$ of the integer
+  sequence values on the cone.}
+\begin{tabular}{ccc}
+\toprule
+$n$ & $r_n = \tfrac{2n}{\pi}+\tfrac{3}{2\pi}$ & $r_n$ (numerical) \\
+\midrule
+ 1  & $\tfrac{2}{\pi}+\tfrac{3}{2\pi} = \tfrac{7}{2\pi}$  &  1.11408460 \\
+ 5  & $\tfrac{10}{\pi}+\tfrac{3}{2\pi} = \tfrac{23}{2\pi}$ &  3.66056369 \\
+ 7  & $\tfrac{14}{\pi}+\tfrac{3}{2\pi} = \tfrac{31}{2\pi}$ &  4.93380324 \\
+11  & $\tfrac{22}{\pi}+\tfrac{3}{2\pi} = \tfrac{47}{2\pi}$ &  7.48028233 \\
+13  & $\tfrac{26}{\pi}+\tfrac{3}{2\pi} = \tfrac{55}{2\pi}$ &  8.75352187 \\
+17  & $\tfrac{34}{\pi}+\tfrac{3}{2\pi} = \tfrac{71}{2\pi}$ & 11.30000096 \\
+19  & $\tfrac{38}{\pi}+\tfrac{3}{2\pi} = \tfrac{79}{2\pi}$ & 12.57324050 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{bemerkung}[Linear Growth Rate]
+The radial difference between two consecutive generators
+is constant:
+\[
+  \Delta r_{\text{Minor}} = \frac{2}{\pi}\cdot 2 = \frac{4}{\pi}
+  \approx 1.27324000,
+  \qquad
+  \Delta r_{\text{Major}} = \frac{2}{\pi}\cdot 4 = \frac{8}{\pi}
+  \approx 2.54647909.
+\]
+This is a direct consequence of the linearity~\eqref{eq:wachstumsrate}.
+\end{bemerkung}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Angular Separations of the Generators in the \texorpdfstring{$xy$}{xy}-Plane}
+% ─────────────────────────────────────────────────────────────────────────────
+
+The azimuthal angles of the integer points follow from
+$\theta_n = \tfrac{\pi}{3}n + \tfrac{\pi}{4}$. Consecutive
+points differ by:
+
+\begin{align*}
+  \Delta\varphi_{\text{Minor}} &= \frac{\pi}{3}\cdot 2 = \frac{2\pi}{3}
+    = 120^\circ, \\
+  \Delta\varphi_{\text{Major}} &= \frac{\pi}{3}\cdot 4 = \frac{4\pi}{3}
+    = 240^\circ.
+\end{align*}
+
+Together they yield a complete revolution:
+$\Delta\varphi_{\text{Minor}} + \Delta\varphi_{\text{Major}} = 2\pi$.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Angle Between Two Generators in Space}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Two generators with azimuthal difference $\Delta\varphi$ have the
+direction vectors
+\[
+  \vec{v}_1 = \begin{pmatrix}1\\0\\\pi/2\end{pmatrix},
+  \qquad
+  \vec{v}_2 = \begin{pmatrix}\cos\Delta\varphi\\\sin\Delta\varphi\\\pi/2\end{pmatrix}.
+\]
+
+The dot product reads:
+\[
+  \vec{v}_1 \cdot \vec{v}_2
+  = \cos\Delta\varphi + \left(\frac{\pi}{2}\right)^2
+  = \cos\Delta\varphi + \frac{\pi^2}{4}.
+\]
+
+Since $|\vec{v}_1| = |\vec{v}_2| = \sqrt{1+\pi^2/4}$, we obtain:
+\[
+  \cos\theta
+  = \frac{\cos\Delta\varphi + \pi^2/4}{1 + \pi^2/4}.
+\]
+
+For minor and major steps, $\cos(120^\circ) = \cos(240^\circ) = -\tfrac{1}{2}$,
+hence:
+\[
+  \cos\theta
+  = \frac{-\tfrac{1}{2} + \tfrac{\pi^2}{4}}{1 + \tfrac{\pi^2}{4}}
+  = \frac{\pi^2 - 2}{\pi^2 + 4}
+  \approx 0.56739934.
+\]
+
+\begin{satz}[Angle Between the Generators]
+The spatial angle between two consecutive generators
+(both minor and major steps) is:
+\begin{equation}
+  \theta = \arccos\!\left(\frac{\pi^2 - 2}{\pi^2 + 4}\right)
+  \approx 55.43092771^\circ.
+\end{equation}
+\end{satz}
+
+\begin{bemerkung}
+Although the azimuthal angles $120^\circ$ and $240^\circ$ are different, the
+spatial angle between the generators is the same in both cases.
+The reason: $\cos(120^\circ) = \cos(240^\circ) = -\tfrac{1}{2}$, so that
+the $z$-component $\pi/2$ has the same effect in both cases,
+and the different opening angles in the plane lead to the same
+spatial angle.
+\end{bemerkung}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Plane Equation and Tilt Angle of the Triangular Face}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Two generators span a triangular face. Its
+normal vector is obtained via the cross product:
+\[
+  \vec{n}
+  = \vec{v}_1 \times \vec{v}_2
+  = \begin{vmatrix}\vec{e}_x & \vec{e}_y & \vec{e}_z\\
+      1 & 0 & \pi/2\\
+      \cos\Delta\varphi & \sin\Delta\varphi & \pi/2
+    \end{vmatrix}.
+\]
+
+Expanding yields:
+\begin{align*}
+  n_x &= 0\cdot\tfrac{\pi}{2} - \tfrac{\pi}{2}\cdot\sin\Delta\varphi
+       = -\frac{\pi}{2}\sin\Delta\varphi, \\
+  n_y &= \tfrac{\pi}{2}\cdot\cos\Delta\varphi - 1\cdot\tfrac{\pi}{2}
+       = \frac{\pi}{2}(\cos\Delta\varphi - 1), \\
+  n_z &= 1\cdot\sin\Delta\varphi - 0\cdot\cos\Delta\varphi
+       = \sin\Delta\varphi.
+\end{align*}
+
+For $\Delta\varphi = 120^\circ$ ($\sin 120^\circ = \tfrac{\sqrt{3}}{2}$,
+$\cos 120^\circ = -\tfrac{1}{2}$):
+\[
+  \vec{n}
+  = \begin{pmatrix}
+      -\dfrac{\pi\sqrt{3}}{4}\\[6pt]
+      -\dfrac{3\pi}{4}\\[6pt]
+      \dfrac{\sqrt{3}}{2}
+    \end{pmatrix}
+  \approx
+  \begin{pmatrix}-1.36034952\\-2.35619449\\0.86602540\end{pmatrix},
+  \qquad
+  |\vec{n}| \approx 2.85520635.
+\]
+
+The tilt angle of the triangular face relative to the $xy$-plane is the angle
+between $\vec{n}$ and the $z$-axis:
+\[
+  \gamma
+  = \arccos\!\left(\frac{|n_z|}{|\vec{n}|}\right)
+  = \arccos\!\left(\frac{\sqrt{3}/2}{|\vec{n}|}\right)
+  \approx \arccos(0.30331447).
+\]
+
+\begin{satz}[Tilt Angle of the Triangular Face]
+\begin{equation}
+  \gamma = \arccos\!\left(\frac{|{n}_z|}{|\vec{n}|}\right)
+  \approx 72.34321285^\circ.
+\end{equation}
+The triangular face is therefore nearly perpendicular to the $xy$-plane,
+consistent with the image of a steeply rising cone.
+\end{satz}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Area of the Triangle at \texorpdfstring{$n = 19$}{n=19}}
+% ─────────────────────────────────────────────────────────────────────────────
+
+As a concrete example we compute the triangular area spanned by the
+two generators of the twin zone at $n = 19$.
+
+\subsection*{Step 1 --- Determine the Vertices}
+
+The radius at $z = 19$:
+\[
+  r_{19}
+  = \frac{2\cdot 19}{\pi} + \frac{3}{2\pi}
+  = \frac{79}{2\pi}
+  \approx 12.57324050.
+\]
+
+The three vertices of the triangle (apex $A$, and two points $B$, $C$
+on the cone surface with $\Delta\varphi = 120^\circ$):
+\begin{align*}
+  A &= \left(0,\; 0,\; -\tfrac{3}{4}\right), \\
+  B &= \left(r_{19},\; 0,\; 19\right)
+     \approx (12.573241,\; 0,\; 19), \\
+  C &= \left(r_{19}\cos 120^\circ,\; r_{19}\sin 120^\circ,\; 19\right)
+     \approx (-6.286621,\; 10.888746,\; 19).
+\end{align*}
+
+\subsection*{Step 2 --- Determine the Side Lengths}
+
+\textbf{Sides $|AB|$ and $|AC|$} (generators):
+
+Since both generators lead to the same height $z = 19$,
+$|AB| = |AC|$. The generator length is computed as:
+\[
+  |AB|
+  = r_{19}\cdot|\vec{v}|
+  = \frac{79}{2\pi}\cdot\sqrt{1+\frac{\pi^2}{4}}
+  \approx 12.573241\cdot 1.862096
+  \approx 23.41257946.
+\]
+
+\textbf{Base $|BC|$} (chord at radius $r_{19}$ and angle $120^\circ$):
+\[
+  |BC|
+  = 2\,r_{19}\sin\!\left(\frac{120^\circ}{2}\right)
+  = 2\,r_{19}\sin 60^\circ
+  = 2\,r_{19}\cdot\frac{\sqrt{3}}{2}
+  = r_{19}\sqrt{3}
+  = \frac{79\sqrt{3}}{2\pi}
+  \approx 21.77749137.
+\]
+
+\subsection*{Step 3 --- Area via Cross Product}
+
+The edge vectors from point $A$:
+\[
+  \overrightarrow{AB} = B - A
+  = \begin{pmatrix}r_{19}\\0\\19+\tfrac{3}{4}\end{pmatrix}
+  = \begin{pmatrix}79/(2\pi)\\0\\79/4\end{pmatrix},
+  \qquad
+  \overrightarrow{AC} = C - A
+  = \begin{pmatrix}-r_{19}/2\\ r_{19}\sqrt{3}/2\\79/4\end{pmatrix}.
+\]
+
+The cross product:
+\[
+  \overrightarrow{AB}\times\overrightarrow{AC}
+  \approx (-215.052727,\; -372.482250,\; 136.906818),
+  \qquad
+  \left|\overrightarrow{AB}\times\overrightarrow{AC}\right|
+  \approx 451.36922682.
+\]
+
+The area of the triangle:
+\[
+  F
+  = \frac{1}{2}\left|\overrightarrow{AB}\times\overrightarrow{AC}\right|
+  \approx \frac{451.369}{2}.
+\]
+
+\begin{satz}[Triangular Area at $n=19$]
+\begin{equation}
+  \boxed{F_{19} = \frac{1}{2}\left|\overrightarrow{AB}\times\overrightarrow{AC}\right|
+  \approx 225.68461341}
+\end{equation}
+\end{satz}
+
+\subsection*{Verification via Heron's Formula}
+
+With side lengths
+$a = |BC| \approx 21.77749137$,
+$b = |AC| \approx 23.41257946$,
+$c = |AB| \approx 23.41257946$ and
+$s = \tfrac{a+b+c}{2} \approx 34.30132515$:
+\[
+  F = \sqrt{s(s-a)(s-b)(s-c)}
+  \approx \sqrt{34.301\cdot 12.524\cdot 10.889\cdot 10.889}
+  \approx 225.68461341 \quad\checkmark
+\]
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Summary of All Angles and Dimensions}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.4}
+\caption{Geometric characteristics of the cone generators.}
+\begin{tabular}{lll}
+\toprule
+Quantity & Exact Form & Numerical \\
+\midrule
+Cone slope & $dz/dr = \pi/2$ & $1.57079633$ \\
+Generator length per $\Delta r=1$ & $\sqrt{1+\pi^2/4}$ & $1.86209589$ \\
+Growth rate $dr/dn$ & $2/\pi$ & $0.63661977$ \\
+$\Delta r$ minor step & $4/\pi$ & $1.27323954$ \\
+$\Delta r$ major step & $8/\pi$ & $2.54647909$ \\
+Azimuthal angle minor & $2\pi/3$ & $120^\circ$ \\
+Azimuthal angle major & $4\pi/3$ & $240^\circ$ \\
+Angle between generators (both) &
+  $\arccos\!\bigl(\tfrac{\pi^2-2}{\pi^2+4}\bigr)$ & $55.43092771^\circ$ \\
+Tilt angle of triangular face &
+  $\arccos\!\bigl(\tfrac{|n_z|}{|\vec{n}|}\bigr)$ & $72.34321285^\circ$ \\
+\midrule
+Radius at $n=19$ & $79/(2\pi)$ & $12.57324050$ \\
+Generator length at $n=19$ & $\tfrac{79}{2\pi}\sqrt{1+\pi^2/4}$ & $23.41257946$ \\
+Base side $|BC|$ at $n=19$ & $\tfrac{79\sqrt{3}}{2\pi}$ & $21.77749137$ \\
+Triangular area at $n=19$ & $\tfrac{1}{2}|\vec{AB}\times\vec{AC}|$ & $225.68461341$ \\
+\bottomrule
+\end{tabular}
+\end{table}

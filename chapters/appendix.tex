@@ -1,0 +1,146 @@
+\appendix
+\chapter{Appendix}
+
+\section{Numerical Computations: Python Code}
+
+The following Python code reproduces the numerical values of this work
+(arc lengths, torsion, curvature). It can be executed directly and
+requires only the standard libraries \texttt{numpy} and \texttt{scipy}.
+
+\begin{verbatim}
+import numpy as np
+from scipy import integrate
+
+# -------------------------------------------------
+# Basic functions
+# -------------------------------------------------
+def k(n):
+    """Quadratic mean-value sequence."""
+    return (2*n**2 + 3*n + 1) / 6
+
+def theta_n(n):
+    """Angular parameter for integer points on the helix."""
+    return (np.pi / 3) * n + (np.pi / 4)
+
+# Helix parameters
+a = 6 / np.pi**2   # Spiral slope
+b = 3 / np.pi       # Height slope
+
+# -------------------------------------------------
+# Arc length of the spiral (p-parametrisation)
+# -------------------------------------------------
+def arc_length_spiral(p1, p2):
+    """Exact arc-length integral of the spiral."""
+    integrand = lambda p: (1/np.pi) * np.sqrt(3/p + np.pi**2)
+    L, _ = integrate.quad(integrand, p1, p2)
+    return L
+
+def arc_length_spiral_taylor(p1, p2):
+    """Taylor approximation of the arc length."""
+    return ((p2 - p1)
+            + (3 / (2*np.pi**2)) * np.log(p2/p1)
+            + (9 / (8*np.pi**4)) * (1/p1 - 1/p2))
+
+# -------------------------------------------------
+# Arc length of the helix (theta-parametrisation)
+# -------------------------------------------------
+def arc_length_helix(t1, t2):
+    """Arc-length integral of the conical helix."""
+    integrand = lambda t: (3/np.pi**2) * np.sqrt(4*(1+t**2) + np.pi**2)
+    L, _ = integrate.quad(integrand, t1, t2)
+    return L
+
+def arc_length_parabola(n1, n2):
+    """Arc length of the quadratic parabola k(n)."""
+    integrand = lambda n: (1/6) * np.sqrt(36 + (4*n+3)**2)
+    L, _ = integrate.quad(integrand, n1, n2)
+    return L
+
+# -------------------------------------------------
+# Curvature and torsion
+# -------------------------------------------------
+def curvature(t):
+    """Planar spiral curvature (2D approximation, cf. remark in Ch. 13)."""
+    return (np.pi**2 * (t**2 + 2)) / (6 * (t**2 + 1)**1.5)
+
+def curvature_3d(t):
+    """Exact 3D curvature of the conical helix (Theorem 13.9)."""
+    c1 = 3 / np.pi
+    num = a * np.sqrt(c1**2 * (t**2 + 4) + a**2 * (t**2 + 2)**2)
+    den = (a**2 * (1 + t**2) + c1**2)**1.5
+    return num / den
+
+def torsion(t):
+    """Torsion of the conical helix."""
+    num = np.pi**3 * (6 + t**2)
+    den = 3 * (np.pi**2 * (4 + t**2) + 4*(2 + t**2)**2)
+    return num / den
+
+# -------------------------------------------------
+# Example outputs
+# -------------------------------------------------
+if __name__ == "__main__":
+    print("=== Difference sequence (major/minor steps) ===")
+    for m in range(1, 6):
+        maj = 16*m - 6
+        mi  = 8*m + 1
+        Um  = maj + mi
+        print(f"m={m}: Major={maj}, Minor={mi}, U_m={Um}")
+
+    print("\n=== Arc-length comparison: parabola vs helix ===")
+    pairs = [(1,5),(5,7),(11,13),(17,19),(23,25),(35,37)]
+    for n1, n2 in pairs:
+        t1 = theta_n(n1)
+        t2 = theta_n(n2)
+        Lp = arc_length_parabola(n1, n2)
+        Lh = arc_length_helix(t1, t2)
+        dev = (Lh - Lp) / Lp * 100
+        print(f"n={n1}->{n2}: L_Parabola={Lp:.6f}, L_Helix={Lh:.6f}, "
+              f"Dev={dev:+.2f}%")
+
+    print("\n=== Curvature and torsion at prime-number angles ===")
+    primes = [5, 7, 11, 13, 17, 19, 23]
+    for p in primes:
+        t = theta_n(p)
+        print(f"p={p:3d}: theta={t:.4f}, "
+              f"kappa_2D={curvature(t):.6f}, "
+              f"kappa_3D={curvature_3d(t):.6f}, "
+              f"tau={torsion(t):.6f}")
+\end{verbatim}
+
+\section{Numerical Verifications}
+
+The following tables supplement the above Python code with independent
+comparisons that confirm the analytical formulae from the respective
+main chapters.
+
+\subsection{Torsion Formula (Theorem~\ref{thm:3d-curvature-torsion})} 
+
+The torsion formula
+\[
+\tau(t) = \frac{\pi^3(6+t^2)}{3[\pi^2(4+t^2)+4(2+t^2)^2]}
+\]
+was verified by direct comparison with the numerical computation via the
+cross product $(\gamma' \times \gamma'') \cdot \gamma''' / |\gamma' \times \gamma''|^2$.
+The following values agree to at least $10$ decimal places:
+
+\begin{table}[h]
+\centering
+\caption{Verification of the torsion at selected points}
+\begin{tabular}{ccc}
+\toprule
+$t$ & $\tau_{\text{formula}}$ & $\tau_{\text{numerical}}$ \\
+\midrule
+$5$  & $0.100055070\ldots$ & $0.100055070\ldots$ \\
+$10$ & $0.025691658\ldots$ & $0.025691658\ldots$ \\
+$20$ & $0.006451662\ldots$ & $0.006451662\ldots$ \\
+$47$ & $0.001169444\ldots$ & $0.001169444\ldots$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Difference Formulae (Theorem~\ref{satz:minor_major_formeln})}
+
+The formulae $\Delta_{\mathrm{major},m} = 16m-6$ and $\Delta_{\mathrm{minor},m} = 8m+1$
+were verified by direct computation from $k(6m-1)-k(6m-5)$ and $k(6m+1)-k(6m-1)$
+for $m = 1, \ldots, 20$ (complete agreement).

@@ -1,0 +1,202 @@
+\chapter{Euclidean Distance Sequences}
+\label{sec:distanz_sequenzen}
+
+The Euclidean distances between consecutive integer points
+$(n_i,\, k(n_i))$ on the curve $k(n) = \frac{1}{6}(2n^2+3n+1)$ can
+be completely described by closed-form formulae. Since $\Delta n$ alternates
+between $2$ (twin zone) and $4$ (gap zone), two subsequences with explicit
+expressions in the period index~$m$ arise.
+
+%─────────────────────────────────────────────────────────────────────────────
+\subsection{Twin-Zone Distance Sequence (\texorpdfstring{$\Delta n = 2$}{Δn=2})}
+%─────────────────────────────────────────────────────────────────────────────
+
+\begin{theorem}[Closed-form formula for twin distances]
+\label{satz:twin_distanz}
+The Euclidean distance between the $m$-th twin pair
+$(n_1, n_2) = (6m-1,\ 6m+1)$ is:
+\begin{equation}
+  \boxed{
+  d_{\mathrm{Twin}}(m)
+  = \sqrt{4 + (8m+1)^2}
+  = \sqrt{64m^2 + 16m + 5}.
+  }
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+We have $\Delta n = 2$ and $\Delta k = k(6m+1)-k(6m-1) = 8m+1$
+(minor step from Theorem~\ref{satz:minor_major_formeln}). Thus:
+\[
+  d^2 = (\Delta n)^2 + (\Delta k)^2
+      = 4 + (8m+1)^2
+      = 64m^2+16m+5.
+\]
+\end{proof}
+
+\begin{table}[H]
+\centering
+\caption{Twin-zone distances $d_{\mathrm{Twin}}(m) = \sqrt{4+(8m+1)^2}$.}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{ccccc}
+\toprule
+$m$ & Pair $(n_1, n_2)$ & $\Delta k = 8m+1$ & $d^2$ & $d_{\mathrm{Twin}}(m)$ \\
+\midrule
+1 & $( 5,  7)$ &  9 &   85 & $\sqrt{85}$   \\
+2 & $(11, 13)$ & 17 &  293 & $\sqrt{293}$  \\
+3 & $(17, 19)$ & 25 &  629 & $\sqrt{629}$  \\
+4 & $(23, 25)$ & 33 & 1093 & $\sqrt{1093}$ \\
+5 & $(29, 31)$ & 41 & 1685 & $\sqrt{1685}$ \\
+6 & $(35, 37)$ & 49 & 2405 & $\sqrt{2405}$ \\
+7 & $(41, 43)$ & 57 & 3253 & $\sqrt{3253}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%─────────────────────────────────────────────────────────────────────────────
+\subsection{Gap-Zone Distance Sequence (\texorpdfstring{$\Delta n = 4$}{Δn=4})}
+%─────────────────────────────────────────────────────────────────────────────
+
+\begin{theorem}[Closed-form formula for gap distances]
+\label{satz:gap_distanz}
+The Euclidean distance between the $m$-th gap pair
+$(n_1, n_2) = (6m-5,\ 6m-1)$ is:
+\begin{equation}
+  \boxed{
+  d_{\mathrm{Gap}}(m)
+  = \sqrt{16 + (16m-6)^2}
+  = 2\sqrt{64m^2 - 48m + 13}.
+  }
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+We have $\Delta n = 4$ and $\Delta k = k(6m-1)-k(6m-5) = 16m-6$
+(major step from Theorem~\ref{satz:minor_major_formeln}). Thus:
+\[
+  d^2 = 16 + (16m-6)^2
+      = 16 + 256m^2-192m+36
+      = 4(64m^2-48m+13).
+\]
+\end{proof}
+
+\begin{table}[H]
+\centering
+\caption{Gap-zone distances $d_{\mathrm{Gap}}(m) = 2\sqrt{64m^2-48m+13}$.}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{ccccc}
+\toprule
+$m$ & Pair $(n_1, n_2)$ & $\Delta k = 16m-6$ & $d^2$ & $d_{\mathrm{Gap}}(m)$ \\
+\midrule
+1 & $( 1,  5)$ & 10 &   116 & $\sqrt{116}$  \\
+2 & $( 7, 11)$ & 26 &   692 & $\sqrt{692}$  \\
+3 & $(13, 17)$ & 42 &  1780 & $\sqrt{1780}$ \\
+4 & $(19, 23)$ & 58 &  3380 & $\sqrt{3380}$ \\
+5 & $(25, 29)$ & 74 &  5492 & $\sqrt{5492}$ \\
+6 & $(31, 35)$ & 90 &  8116 & $\sqrt{8116}$ \\
+7 & $(37, 41)$ & 106 & 11252 & $\sqrt{11252}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%─────────────────────────────────────────────────────────────────────────────
+\subsection{Complete Distance Sequence in a Running Index}
+%─────────────────────────────────────────────────────────────────────────────
+
+When both zones are merged in the natural order of the indices and labelled
+with the running index $x = 1, 2, 3, \ldots$, the following unified
+representation in $x$ is obtained:
+
+\begin{theorem}[Distance sequence in overall index $x$]
+\label{satz:distanz_gesamtindex}
+With the overall index $x = 1, 2, 3, \ldots$ (gap at odd, twin at
+even $x$):
+\begin{equation}
+  d^2(x) =
+  \begin{cases}
+    64x^2 + 32x + 20 & x \text{ odd (gap zone)}, \\[4pt]
+    16x^2 + 8x + 5   & x \text{ even (twin zone)}.
+  \end{cases}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Let $m = \lceil x/2 \rceil$. For odd $x = 2m-1$:
+\[
+  64x^2+32x+20
+  = 64(2m-1)^2+32(2m-1)+20
+  = 256m^2-192m+52
+  = d_{\mathrm{Gap}}^2(m). \;\checkmark
+\]
+For even $x = 2m$:
+\[
+  16x^2+8x+5
+  = 16(2m)^2+8(2m)+5
+  = 64m^2+16m+5
+  = d_{\mathrm{Twin}}^2(m). \;\checkmark
+\]
+\end{proof}
+
+\begin{table}[H]
+\centering
+\caption{Complete distance sequence, alternating gap and twin.
+  The precursor value $\sqrt{5}$ (index $x=0$) corresponds to the distance
+  from the zero point $(-1,\,0)$ to the first integer point $(1,\,1)$,
+  since $k(-1) = 0$.}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{ccccc}
+\toprule
+$x$ & Pair $(n_1,n_2)$ & Type & $d^2$ & $d$ \\
+\midrule
+0 & $(-1,\; 1)$ & Precursor & $5$ & $\sqrt{5}$ \\
+\midrule
+1  & $( 1,  5)$ & Gap  & 116   & $\sqrt{116}$   \\
+2  & $( 5,  7)$ & Twin & 85    & $\sqrt{85}$    \\
+3  & $( 7, 11)$ & Gap  & 692   & $\sqrt{692}$   \\
+4  & $(11, 13)$ & Twin & 293   & $\sqrt{293}$   \\
+5  & $(13, 17)$ & Gap  & 1780  & $\sqrt{1780}$  \\
+6  & $(17, 19)$ & Twin & 629   & $\sqrt{629}$   \\
+7  & $(19, 23)$ & Gap  & 3380  & $\sqrt{3380}$  \\
+8  & $(23, 25)$ & Twin & 1093  & $\sqrt{1093}$  \\
+9  & $(25, 29)$ & Gap  & 5492  & $\sqrt{5492}$  \\
+10 & $(29, 31)$ & Twin & 1685  & $\sqrt{1685}$  \\
+11 & $(31, 35)$ & Gap  & 8116  & $\sqrt{8116}$  \\
+12 & $(35, 37)$ & Twin & 2405  & $\sqrt{2405}$  \\
+13 & $(37, 41)$ & Gap  & 11252 & $\sqrt{11252}$ \\
+14 & $(41, 43)$ & Twin & 3253  & $\sqrt{3253}$  \\
+$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{remark}[Precursor point and zero]
+	The curve $k(n)$ has a zero at $n = -1$:
+	\[
+	k(-1) = \frac{2(-1)^2 + 3(-1) + 1}{6} = \frac{2 - 3 + 1}{6} = 0.
+	\]
+	Since $-1 \equiv 5 \pmod{6}$, this value satisfies the congruence condition
+	$n \equiv 1, 5 \pmod{6}$. However, it lies outside the
+	domain of the sequence ($n \geq 1$) and therefore does not appear
+	as a term of the sequence --- not because of the residue class, but because
+	of the restriction to positive indices.
+	
+	As a geometric precursor point, $(-1,\, 0)$ nevertheless admits a
+	natural interpretation: the distance to the first genuine sequence term
+	$(1,\, 1)$ is
+	\[
+	d = \sqrt{(1-(-1))^2 + (1-0)^2} = \sqrt{5},
+	\]
+	a value that appears in the sequence as a natural initial value before
+	$k(1) = 1$.
+\end{remark}
+
+\begin{remark}[Growth rate]
+The gap distances grow asymptotically as $16m \sim 16\cdot\frac{x}{2} = 8x$,
+the twin distances as $8m \sim 4x$. The ratio
+\[
+  \frac{d_{\mathrm{Gap}}(m)}{d_{\mathrm{Twin}}(m)}
+  \;\xrightarrow{m\to\infty}\; 2,
+\]
+which directly reflects the ratio of step sizes $\Delta n_{\mathrm{Gap}} /
+\Delta n_{\mathrm{Twin}} = 4/2 = 2$.
+\end{remark}

@@ -1,0 +1,507 @@
+\chapter{From Steps to the Archimedean Spiral}\label{sec:spirale}
+
+%═══════════════════════════════════════════════════════════════════════════
+\section{Geometric Motivation: From the Discrete Step Pattern to the
+Continuous Spiral}
+%═══════════════════════════════════════════════════════════════════════════
+
+\subsection{Starting Point and Guiding Question}
+
+In Chapter~\ref{sec:arithmetik} it was shown that the quadratic sequence
+\[
+  k(n) = \frac{2n^2 + 3n + 1}{6}
+\]
+takes integer values precisely for the index values $n \equiv 1, 5 \pmod{6}$.
+The resulting discrete point set
+\[
+  \mathcal{P} = \bigl\{(n,\, k(n)) \mid n \equiv 1, 5 \pmod{6},\ n \geq 1\bigr\}
+\]
+has a parabolic shape in Cartesian coordinates, since $k(n)$ is a polynomial
+of degree two in $n$. For the objective of this work --- the embedding of this
+discrete structure into a geometrically regular, three-dimensional space --- the
+Cartesian representation is, however, not suitable. It admits no natural
+periodisation, no angular structure, and it does not make the underlying modular
+regularity of the index $n$ geometrically visible.
+
+\begin{tcolorbox}[
+  title={Guiding question of this chapter},
+  colback=gray!5,
+  colframe=gray!50!black,
+  enhanced,
+  breakable
+]
+\emph{Does there exist a partition of the difference sequence of the
+sequence $k(n)$ into equally-sized blocks such that the resulting block
+sums can be interpreted as circumferences of concentric circles and the
+resulting radius sequence defines an Archimedean spiral with a closed-form
+slope constant? And if so: is this partition uniquely determined?}
+\end{tcolorbox}
+
+The answer to both questions, as we shall prove below, is uniquely \emph{yes}.
+
+%─────────────────────────────────────────────────────────────────────────
+\subsection{The Difference Sequence of the Integer Values}
+\label{subsec:differenzstruktur}
+
+We denote by $(n_k)_{k \geq 1}$ the ascending sequence of all
+indices with $n_k \equiv 1, 5 \pmod{6}$:
+\[
+  n_1 = 1,\quad n_2 = 5,\quad n_3 = 7,\quad n_4 = 11,\quad
+  n_5 = 13,\quad n_6 = 17,\quad n_7 = 19,\quad n_8 = 23,\quad \ldots
+\]
+The corresponding function values (integer values of the sequence) are:
+\[
+  p_k = k(n_k)\colon\quad 1,\ 11,\ 20,\ 46,\ 63,\ 105,\ 130,\ 188,\ 221,\ldots
+\]
+We define the \emph{first difference sequence} of this value sequence:
+\[
+  \delta_k = p_{k+1} - p_k = k(n_{k+1}) - k(n_k),\qquad k \geq 1.
+\]
+The first terms of this difference sequence are:
+\[
+  \delta_1 = 10,\quad \delta_2 = 9,\quad \delta_3 = 26,\quad
+  \delta_4 = 17,\quad \delta_5 = 42,\quad \delta_6 = 25,\quad
+  \delta_7 = 58,\quad \delta_8 = 33,\quad \ldots
+\]
+
+\begin{remark}[Alternating growth of the differences]
+The difference sequence $(\delta_k)$ exhibits a clear alternating pattern:
+\begin{itemize}
+  \item The terms at \emph{odd} positions ($\delta_1, \delta_3, \delta_5, \ldots$)
+        take the values $10, 26, 42, 58, \ldots$ and form an arithmetic subsequence
+        with constant second difference $16$.
+  \item The terms at \emph{even} positions ($\delta_2, \delta_4, \delta_6, \ldots$)
+        take the values $9, 17, 25, 33, \ldots$ and form an arithmetic subsequence
+        with constant second difference $8$.
+\end{itemize}
+This pattern directly reflects the alternation of the index differences
+$n_{k+1} - n_k$, which alternate between $\Delta n = 4$ (for
+$n_k \equiv 1 \pmod{6}$, \emph{major steps}) and $\Delta n = 2$ (for
+$n_k \equiv 5 \pmod{6}$, \emph{minor steps}).
+\end{remark}
+
+%─────────────────────────────────────────────────────────────────────────
+\subsection{The Block-Formation Problem and Its Unique Solution}
+\label{subsec:gruppenbildung}
+
+We pose the following algebraic question: which partition of the
+difference sequence $(\delta_k)$ into consecutive, equally-sized blocks
+of length $\ell \in \{1, 2, 3, \ldots\}$ produces a sequence of block
+sums that forms an \emph{arithmetic progression}?
+
+Formally, for a block size $\ell \geq 1$ we define the sequence of
+block sums
+\[
+  S_m^{(\ell)} = \sum_{j=1}^{\ell} \delta_{\ell(m-1)+j},\qquad m \geq 1,
+\]
+and ask: for which values of $\ell$ is $(S_m^{(\ell)})_{m \geq 1}$
+an arithmetic sequence?
+
+\begin{theorem}[Uniqueness of the arithmetic grouping]\label{satz:eindeutigkeit}
+Among all block sizes $\ell \in \{1, 2, 3\}$, the value $\ell = 2$ is the unique one
+for which $(S_m^{(\ell)})$ forms an arithmetic progression with non-trivial
+common difference.
+\end{theorem}
+
+\begin{proof}
+We examine the three relevant cases.
+
+\textbf{Case $\ell = 1$:} The block sums are the differences themselves:
+\[
+  S_1^{(1)} = 10,\quad S_2^{(1)} = 9,\quad S_3^{(1)} = 26,\quad
+  S_4^{(1)} = 17,\quad \ldots
+\]
+The sequence is not monotone ($10, 9, 26, 17, \ldots$) and hence not
+an arithmetic progression.
+
+\textbf{Case $\ell = 2$:} The block sums are pairwise sums:
+\begin{align*}
+S_1^{(2)} &= \delta_1 + \delta_2 = 10 + 9 = 19,\\
+S_2^{(2)} &= \delta_3 + \delta_4 = 26 + 17 = 43,\\
+S_3^{(2)} &= \delta_5 + \delta_6 = 42 + 25 = 67,\\
+S_4^{(2)} &= \delta_7 + \delta_8 = 58 + 33 = 91.
+\end{align*}
+The differences of consecutive block sums are:
+\[
+  43 - 19 = 24,\qquad 67 - 43 = 24,\qquad 91 - 67 = 24.
+\]
+For the general proof we use the closed-form formulae derived in
+Section~\ref{sec:minor_major_herleitung}
+(Theorem~\ref{satz:minor_major_formeln}):
+\[
+  \delta_{2m-1} = \Delta_{\mathrm{Major}}(m) = 16m - 6,\qquad
+  \delta_{2m} = \Delta_{\mathrm{Minor}}(m) = 8m + 1.
+\]
+This yields:
+\[
+  S_m^{(2)} = \delta_{2m-1} + \delta_{2m}
+            = (16m-6) + (8m+1)
+            = 24m - 5,
+\]
+and
+\[
+  S_{m+1}^{(2)} - S_m^{(2)}
+  = \bigl[24(m+1)-5\bigr] - \bigl[24m-5\bigr]
+  = 24.
+\]
+The sequence $(S_m^{(2)})$ is thus an arithmetic progression with common
+difference $24$.
+
+\textbf{Case $\ell = 3$:} The block sums are:
+\begin{align*}
+S_1^{(3)} &= \delta_1 + \delta_2 + \delta_3 = 10 + 9 + 26 = 45,\\
+S_2^{(3)} &= \delta_4 + \delta_5 + \delta_6 = 17 + 42 + 25 = 84,\\
+S_3^{(3)} &= \delta_7 + \delta_8 + \delta_9 = 58 + 33 + 74 = 165.
+\end{align*}
+The differences: $84 - 45 = 39$ and $165 - 84 = 81$ are distinct.
+Hence $(S_m^{(3)})$ is not an arithmetic progression.
+\end{proof}
+
+\begin{remark}[Connection to the OEIS]
+	The sequence of circumferences $U_m = 24m - 5$ is listed in the OEIS
+	under A350051~\cite{OEIS} as part of the trisection of
+	$A017101 = \{3 + 8k\}_{k \geq 0}$. It is congruent to
+	$1 \pmod{6}$ --- in agreement with the congruence structure
+	of the sequence $k(n)$.
+\end{remark}
+
+\begin{note}[Extension to all $\ell \geq 1$]
+Theorem~\ref{satz:eindeutigkeit} treats explicitly $\ell \in \{1,2,3\}$.
+For general $\ell \geq 1$ one can verify directly that
+\[
+  S_m^{(\ell)} = \sum_{j=1}^{\ell} \delta_{\ell(m-1)+j}
+\]
+forms an arithmetic progression in $m$ if and only if
+$S_{m+1}^{(\ell)} - S_m^{(\ell)}$ is independent of $m$.
+Since the difference sequence $(\delta_j)$ has period~$2$
+(in the sense of the alternating minor/major structure), the
+difference $S_{m+1}^{(\ell)} - S_m^{(\ell)}$ is
+$m$-independent only when $\ell$ is a multiple of~$2$.
+For odd $\ell$, each block contains a different mix
+of minor and major steps, leading to $m$-dependent differences.
+Among all even $\ell$, the value $\ell = 2$ yields the minimal and
+geometrically natural pairing. A complete proof for all
+$\ell \geq 4$ via a general parity argument remains as
+a supplementary exercise.
+\end{note}
+
+%─────────────────────────────────────────────────────────────────────────
+\subsection{Geometric Interpretation of the Block Sums as Circumferences}
+\label{subsec:geometrische_interpretation}
+
+Having established that the pairwise block sums $S_m^{(2)} = 24m - 5$ form
+an arithmetic progression, we now present the decisive geometric argument.
+
+An Archimedean spiral $r(\varphi) = a\varphi$ has the defining
+property of \emph{constant radial difference}: for each complete
+revolution $\Delta\varphi = 2\pi$ one has
+\[
+  \Delta r = 2\pi a = \text{const}.
+\]
+Equivalently: the circumferences $U_m = 2\pi R_m$ of successive
+spiral windings themselves form an arithmetic progression with constant
+difference $\Delta U = 2\pi \Delta R$.
+\clearpage
+
+\begin{tcolorbox}[
+  title={Justification of the circumference identification},
+  colback=blue!3,
+  colframe=blue!40!black,
+  enhanced,
+  breakable
+]
+The integer points of the sequence $k(n)$ exhibit a radial arrangement
+in a polar representation: points with $n_k \equiv 1 \pmod{6}$ gather
+along one preferred radial direction, points with $n_k \equiv 5 \pmod{6}$
+along another. This structure suggests interpreting each pair of consecutive
+points --- one major step and one minor step --- as a complete
+\emph{period} of the arrangement, corresponding geometrically to one winding
+of the spiral.
+
+Under this interpretation, the sum of the radial increments
+within such a period corresponds to the circumference increment of a circle.
+The fact that this sum --- and only this pairing --- yields an arithmetic
+progression (Theorem~\ref{satz:eindeutigkeit}) constitutes the algebraic
+proof that the identification is geometrically consistent: only with this
+pairing does a spiral with \emph{constant} winding spacing arise.
+\end{tcolorbox}
+
+\begin{definition}[Circumferences of the sequence]\label{def:kreisumfaenge}
+We identify the pairwise block sums of the difference sequence
+with the circumferences of a family of concentric circles:
+\[
+  U_m \coloneqq S_m^{(2)} = \delta_{2m-1} + \delta_{2m} = 24m - 5.
+\]
+\end{definition}
+
+%═══════════════════════════════════════════════════════════════════════════
+\section{Derivation of the Major and Minor Step Formulae}
+\label{sec:minor_major_herleitung}
+%═══════════════════════════════════════════════════════════════════════════
+
+\subsection{Explicit Computation of the Step Sizes}
+
+We derive the closed-form formulae for the major and minor step sizes
+directly from the definition of $k(n)$.
+
+The indices of the integer values follow a periodic pattern:
+\[
+  \ldots,\quad 6m-5,\quad 6m-1,\quad 6m+1,\quad 6m+5,\quad 6m+7,\quad\ldots
+\]
+Here $6m-5 \equiv 1 \pmod{6}$ and $6m-1 \equiv 5 \pmod{6}$.
+The period $m$ ($m = 1, 2, 3, \ldots$) consists of:
+\begin{itemize}
+  \item a \textbf{major step} from $n = 6m-5$ to $n = 6m-1$
+        (index difference $\Delta n = 4$),
+  \item a \textbf{minor step} from $n = 6m-1$ to $n = 6m+1$
+        (index difference $\Delta n = 2$).
+\end{itemize}
+
+\begin{theorem}[Explicit formulae for major and minor steps]\label{satz:minor_major_formeln}
+For the $m$-th period ($m \geq 1$):
+\begin{align}
+  \Delta_{\mathrm{Major}}(m)
+  &= k(6m-1) - k(6m-5)
+  = 16m - 6,\label{eq:major_formel}\\[6pt]
+  \Delta_{\mathrm{Minor}}(m)
+  &= k(6m+1) - k(6m-1)
+  = 8m + 1.\label{eq:minor_formel}
+\end{align}
+\end{theorem}
+
+\begin{proof}
+\textbf{Major step:} We compute $k(6m-1) - k(6m-5)$ directly.
+With $k(n) = \frac{2n^2+3n+1}{6}$:
+\begin{align*}
+  k(6m-1) - k(6m-5)
+  &= \frac{2(6m-1)^2 + 3(6m-1) + 1}{6}
+   - \frac{2(6m-5)^2 + 3(6m-5) + 1}{6} \\[4pt]
+  &= \frac{1}{6}\bigl[2\bigl((6m-1)^2 - (6m-5)^2\bigr)
+     + 3\bigl((6m-1) - (6m-5)\bigr)\bigr].
+\end{align*}
+We use the difference-of-squares identity $a^2 - b^2 = (a+b)(a-b)$
+with $a = 6m-1$ and $b = 6m-5$:
+\begin{align*}
+  (6m-1)^2 - (6m-5)^2
+  &= \bigl[(6m-1)+(6m-5)\bigr]\bigl[(6m-1)-(6m-5)\bigr] \\
+  &= (12m-6)\cdot 4
+  = 48m - 24.
+\end{align*}
+Moreover: $(6m-1)-(6m-5) = 4$. Substituting:
+\begin{align*}
+  k(6m-1) - k(6m-5)
+  &= \frac{1}{6}\bigl[2(48m-24) + 3 \cdot 4\bigr] \\
+  &= \frac{1}{6}\bigl[96m - 48 + 12\bigr] \\
+  &= \frac{96m - 36}{6}
+  = 16m - 6. \checkmark
+\end{align*}
+
+\textbf{Minor step:} We compute $k(6m+1) - k(6m-1)$:
+\begin{align*}
+  k(6m+1) - k(6m-1)
+  &= \frac{1}{6}\bigl[2\bigl((6m+1)^2 - (6m-1)^2\bigr)
+     + 3\bigl((6m+1) - (6m-1)\bigr)\bigr].
+\end{align*}
+With $a = 6m+1$, $b = 6m-1$:
+\begin{align*}
+  (6m+1)^2 - (6m-1)^2
+  &= (12m)(2) = 24m.
+\end{align*}
+Moreover: $(6m+1)-(6m-1) = 2$. Substituting:
+\begin{align*}
+  k(6m+1) - k(6m-1)
+  &= \frac{1}{6}\bigl[2 \cdot 24m + 3 \cdot 2\bigr]
+  = \frac{48m + 6}{6}
+  = 8m + 1. \checkmark
+\end{align*}
+\end{proof}
+
+\begin{table}[htbp]
+\centering
+\caption{Step sizes of the first periods}
+\begin{tabular}{c|cc|cc|c}
+\toprule
+Period $m$ & Starting value $n$ & $\Delta_{\mathrm{Major}}$ &
+Intermediate value $n$ & $\Delta_{\mathrm{Minor}}$ & $U_m$ \\
+\midrule
+1 & 1  & 10 & 5  & 9  & 19 \\
+2 & 7  & 26 & 11 & 17 & 43 \\
+3 & 13 & 42 & 17 & 25 & 67 \\
+4 & 19 & 58 & 23 & 33 & 91 \\
+5 & 25 & 74 & 29 & 41 & 115 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{remark}[Verification of the formulae]
+For $m=1$: $\Delta_{\mathrm{Major}}(1) = 16\cdot1 - 6 = 10$ ,
+$\Delta_{\mathrm{Minor}}(1) = 8\cdot1 + 1 = 9$ .
+For $m=2$: $\Delta_{\mathrm{Major}}(2) = 32-6 = 26$ ,
+$\Delta_{\mathrm{Minor}}(2) = 17$ . The formulae match
+the computed differences exactly.
+\end{remark}
+
+\subsection{The Unified Generator Function}
+
+The two subsequences can be combined into a single formula
+that generates all steps of the interleaved sequence $(\delta_k)$.
+
+\begin{theorem}[Generating function of the difference sequence]
+The complete difference sequence $(\delta_k)_{k \geq 1}$ in its natural
+order starting from $n = 1$:
+\[
+  \delta_1 = 10,\; \delta_2 = 9,\; \delta_3 = 26,\; \delta_4 = 17,\;
+  \delta_5 = 42,\; \delta_6 = 25,\; \delta_7 = 58,\; \delta_8 = 33,\; \ldots
+\]
+(\textbf{major, minor, major, minor, \ldots}) is generated by the closed-form
+formula
+\begin{equation}
+  a_k = \frac{1}{2}\bigl[(12k+3) + (-1)^{k+1}(4k+1)\bigr],
+  \qquad k \geq 1,
+\end{equation}
+where $a_1 = 10$ corresponds to the first major step (from $n_1 = 1$ to
+$n_2 = 5$).
+\end{theorem}
+
+\begin{proof}
+For $k = 2m-1$ (odd positions, major steps):
+\begin{align*}
+  a_{2m-1}
+  &= \frac{1}{2}\bigl[(12(2m-1)+3) + (-1)^{2m}(4(2m-1)+1)\bigr] \\
+  &= \frac{1}{2}\bigl[(24m-9) + (8m-3)\bigr]
+  = \frac{32m-12}{2} = 16m-6.
+\end{align*}
+This is exactly $\Delta_{\mathrm{Major}}(m) = 16m-6$. \quad
+Check: $a_1 = 16\cdot1-6 = 10$. \checkmark
+
+For $k = 2m$ (even positions, minor steps):
+\begin{align*}
+  a_{2m}
+  &= \frac{1}{2}\bigl[(12(2m)+3) + (-1)^{2m+1}(4(2m)+1)\bigr] \\
+  &= \frac{1}{2}\bigl[(24m+3) - (8m+1)\bigr]
+  = \frac{16m+2}{2} = 8m+1.
+\end{align*}
+This is exactly $\Delta_{\mathrm{Minor}}(m) = 8m+1$. \quad
+Check: $a_2 = 8\cdot1+1 = 9$. \checkmark
+
+The period sums remain identical:
+\[
+  U_m = a_{2m-1} + a_{2m}
+      = (16m-6) + (8m+1)
+      = 24m - 5. \qquad\checkmark
+\]
+\end{proof}
+
+%═══════════════════════════════════════════════════════════════════════════
+\section{From Steps to Circumferences}
+%═══════════════════════════════════════════════════════════════════════════
+
+With the formulae proved in Section~\ref{sec:minor_major_herleitung}
+we can now introduce the definitions of minor and major steps.
+
+\begin{definition}[Minor and Major Steps]
+The step sizes of the $m$-th period are denoted as follows:
+\begin{align}
+  \Delta_{\mathrm{Minor},m} &= 8m + 1 \quad
+    \text{(step $\Delta n = 2$, from } n\equiv5 \text{ to } n\equiv1\text{)},\\
+  \Delta_{\mathrm{Major},m} &= 16m - 6 \quad
+    \text{(step $\Delta n = 4$, from } n\equiv1 \text{ to } n\equiv5\text{)}.
+\end{align}
+\end{definition}
+
+\begin{definition}[Circumferences]
+One major and one minor step together form the $m$-th
+\emph{circumference}:
+\begin{equation}
+  U_m = \Delta_{\mathrm{Major},m} + \Delta_{\mathrm{Minor},m}.
+\end{equation}
+\end{definition}
+
+\begin{theorem}[Arithmetic sequence of circumferences]
+The circumferences form an arithmetic sequence:
+\begin{equation}
+  U_m = \Delta_{\mathrm{Major},m} + \Delta_{\mathrm{Minor},m}
+      = (16m-6) + (8m+1)
+      = 24m - 5,
+\end{equation}
+with constant difference
+\[
+  \Delta U = U_{m+1} - U_m = 24.
+\]
+\end{theorem}
+
+%═══════════════════════════════════════════════════════════════════════════
+\section{Radius Sequence}
+%═══════════════════════════════════════════════════════════════════════════
+
+From the circumferences the radius sequence follows via $U_m = 2\pi R_m$:
+\begin{equation}
+  R_m = \frac{U_m}{2\pi} = \frac{24m - 5}{2\pi}.
+\end{equation}
+
+\begin{theorem}[Constant radius difference --- key result]
+\begin{equation}
+  \boxed{\Delta R = R_{m+1} - R_m = \frac{24}{2\pi} = \frac{12}{\pi}
+  \approx 3.819718634205}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Direct computation:
+\[
+  R_{m+1} - R_m
+  = \frac{24(m+1)-5}{2\pi} - \frac{24m-5}{2\pi}
+  = \frac{24}{2\pi}
+  = \frac{12}{\pi}.
+\]
+\end{proof}
+
+%═══════════════════════════════════════════════════════════════════════════
+\section{Archimedean Spiral}
+%═══════════════════════════════════════════════════════════════════════════
+
+\begin{definition}
+An \emph{Archimedean spiral} is a plane curve in polar coordinates
+of the form
+\[
+  r(\theta) = a\theta,
+\]
+with slope constant $a > 0$. The characterising property of this
+class of curves is the constant radial difference between successive
+windings: for each complete revolution $\Delta\theta = 2\pi$,
+\[
+  \Delta r = r(\theta + 2\pi) - r(\theta) = 2\pi a.
+\]
+\end{definition}
+
+The uniqueness of the pairing proved in Theorem~\ref{satz:eindeutigkeit}
+and the resulting constant $\Delta R = 12/\pi$ uniquely determine
+the slope constant $a$:
+\begin{align}
+  2\pi a &= \Delta R = \frac{12}{\pi},\\[4pt]
+  a &= \frac{12}{2\pi^2} = \frac{6}{\pi^2}.
+\end{align}
+
+\begin{theorem}[Spiral equation]
+\begin{equation}
+  \boxed{
+    r(\theta) = \frac{6}{\pi^2}\,\theta
+    \approx 0.607927101854 \cdot \theta
+  }
+\end{equation}
+\end{theorem}
+
+\begin{remark}[Connection to the Basel problem]
+The slope constant
+\[
+  a = \frac{6}{\pi^2} = \frac{1}{\zeta(2)},
+  \qquad
+  \zeta(2) = \sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}
+\]
+is the reciprocal of the Riemann zeta function at $s=2$, i.e.\ the
+solution of the classical Basel problem. The value $\zeta(2) = \pi^2/6$
+was proved by Leonhard Euler in 1734~\cite{Euler1740,Hardy2008}. The fact
+that the spiral constant, obtained from purely combinatorial-arithmetic
+considerations on the difference structure of the sequence $k(n)$,
+coincides with $1/\zeta(2)$ is a remarkable structural connection.
+\end{remark}

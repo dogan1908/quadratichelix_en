@@ -1,0 +1,232 @@
+% references.bib
+% Bibliografie zum Projekt: Kegelstrahlen, quadratische Folge k(n), Helixparametrisierung
+% Einbindung in main.tex:
+%   \bibliographystyle{plain}   % oder alpha, amsplain, abbrvnat, ...
+%   \bibliography{references}
+%
+% Die bestehenden \bibitem-Einträge aus main.tex bitte entfernen und
+% durch obige zwei Zeilen ersetzen.
+% ─────────────────────────────────────────────────────────────────────────────
+
+% ── Zahlentheorie ─────────────────────────────────────────────────────────────
+
+@book{Hardy2008,
+  author    = {Hardy, Godfrey Harold and Wright, Edward Maitland},
+  title     = {An Introduction to the Theory of Numbers},
+  edition   = {6},
+  editor    = {Heath-Brown, D. R. and Silverman, J. H.},
+  publisher = {Oxford University Press},
+  address   = {Oxford},
+  year      = {2008},
+  isbn      = {978-0-19-921986-5},
+  annotation = {Standardreferenz für quadratische Formen (Kap.~14--15) und
+    die Darstellung von Zahlen durch Quadrate (Kap.~20). Liefert den
+    zahlentheoretischen Rahmen für die Fundamentalidentität
+    $(4n+3)^2 = 48\,k(n)+1$: Das Polynom $k(n)$ erzeugt an ganzzahligen
+    Stellen stets vollständige Quadrate -- eine Eigenschaft, die im Kontext
+    binärer quadratischer Formen und quadratischer Felder behandelt wird.}
+}
+
+@misc{OEIS,
+  author       = {Sloane, Neil J. A. and {OEIS Foundation Inc.}},
+  title        = {The {On-Line Encyclopedia of Integer Sequences}},
+  howpublished = {\url{https://oeis.org}},
+  year         = {2024},
+  annotation   = {Standarddatenbank für ganzzahlige Folgen. Relevant für die
+    Folge $k(n) = (2n^2+3n+1)/6$ sowie die universelle Größe $Q(n) = 4n+3$.
+    Ein OEIS-Eintrag macht die Folge für andere Forscher auffindbar und
+    erlaubt systematische Querverbindungen zu verwandten Sequenzen.}
+}
+
+% ── Phyllotaxis und Spiralgitter ───────────────────────────────────────────────
+
+@book{Jean1994,
+  author    = {Jean, Roger V.},
+  title     = {Phyllotaxis: A Systemic Study in Plant Morphogenesis},
+  publisher = {Cambridge University Press},
+  address   = {Cambridge},
+  year      = {1994},
+  isbn      = {978-0-521-40482-2},
+  annotation = {Maßgebliche mathematische Referenz für äquidistante Punkte auf
+    Archimedischen Spiralen und die daraus entstehenden ganzzahligen Gitterstrukturen
+    (Parastichien). Die Strahlenstruktur in Kap.~\ref{sec:visualisierung} --
+    Diagonalen entlang $n \equiv 1,5\pmod{6}$ -- ist das arithmetische Analogon
+    der Parastichien-Spiralen. Kap.~4--6 behandeln quadratische Wachstumsgesetze
+    auf Spiralen systematisch und belegen den allgemeinen Werkzeugcharakter der
+    asymptotischen Methode.}
+}
+
+@book{Prusinkiewicz1990,
+  author    = {Prusinkiewicz, Przemys{\l}aw and Lindenmayer, Aristid},
+  title     = {The Algorithmic Beauty of Plants},
+  publisher = {Springer-Verlag},
+  address   = {New York},
+  year      = {1990},
+  isbn      = {978-0-387-97297-8},
+  note      = {Frei verfügbar: \url{http://algorithmicbotany.org/papers/abop/abop.pdf}},
+  annotation = {Kapitel~4 behandelt Phyllotaxis konstruktiv: äquidistante
+    Platzierung auf Spiralen und deren Beziehung zu Fibonacci-Zahlen.
+    Ergänzt Jean~(1994) durch explizite Algorithmen und Visualisierungen,
+    die direkt mit den Desmos-Darstellungen in Kap.~\ref{sec:visualisierung}
+    vergleichbar sind.}
+}
+
+% ── Differentialgeometrie ─────────────────────────────────────────────────────
+
+@book{doCarmo1976,
+  author    = {do Carmo, Manfredo Perd\~{a}o},
+  title     = {Differential Geometry of Curves and Surfaces},
+  publisher = {Prentice-Hall},
+  address   = {Englewood Cliffs, NJ},
+  year      = {1976},
+  isbn      = {978-0-13-212589-5},
+  annotation = {Standardreferenz für Raumkurven (Kap.~1): Bogenlänge,
+    Frenet-Rahmen, Helixparametrisierung. Liefert den Rahmen für
+    Satz~\ref{satz:kegel} (Kegelkonformität) und Satz~\ref{satz:helix}
+    (exakte Helixparametrisierung) und macht transparent, was an der
+    $Q(k)$-Darstellung neu ist: die kompakte Kodierung aller drei
+    Koordinaten durch einen einzigen algebraischen Ausdruck.}
+}
+
+% ── Gewöhnliche Differentialgleichungen ───────────────────────────────────────
+
+@book{Teschl2012,
+  author    = {Teschl, Gerald},
+  title     = {Ordinary Differential Equations and Dynamical Systems},
+  series    = {Graduate Studies in Mathematics},
+  volume    = {140},
+  publisher = {American Mathematical Society},
+  address   = {Providence, RI},
+  year      = {2012},
+  isbn      = {978-0-8218-8328-0},
+  note      = {Frei verfügbar: \url{https://www.mat.univie.ac.at/~gerald/ftp/book-ode/}},
+  annotation = {Belegt Eindeutigkeitssatz und Trennung der Variablen (Kap.~2),
+    die Grundlage von Satz~\ref{satz:ode}: Die ODE $(4z+3)\,dz/dk = 6$
+    mit Anfangsbedingung $z(1/6)=0$ besitzt eine eindeutige Lösung, die
+    exakt mit der invertierten Folgengleichung $k(z)=k$ übereinstimmt.
+    Die Originalität liegt in der Verbindung zur Folgenstruktur, nicht
+    in der ODE-Lösung selbst.}
+}
+
+% ── Bogenlänge und Archimedische Spirale ──────────────────────────────────────
+
+@book{Abramowitz1972,
+  author    = {Abramowitz, Milton and Stegun, Irene A.},
+  title     = {Handbook of Mathematical Functions},
+  publisher = {Dover Publications},
+  address   = {New York},
+  year      = {1972},
+  isbn      = {978-0-486-61272-0},
+  annotation = {Referenz für die geschlossenen Integralformeln der Bogenlänge
+    (Kap.~05b): Das Standardintegral $\int\sqrt{u^2+a^2}\,du$ und die
+    zugehörige $\operatorname{arcsinh}$-Form sind in Abschn.~29.2 tabelliert.
+    Belegt die in Satz~\ref{satz:bl_geschlossen} verwendete Stammfunktion.}
+}
+
+% ──Quasi Polynome──────────────────────────────────────────────────────
+
+@book{BeckRobins2007,
+  author    = {Beck, Matthias and Robins, Sinai},
+  title     = {Computing the Continuous Discretely:
+               Integer-Point Enumeration in Polyhedra},
+  publisher = {Springer},
+  year      = {2007},
+  isbn      = {978-0-387-29139-0},
+  note      = {Frei verfügbar: \url{https://matthbeck.github.io/ccd.html}},
+  annotation = {Zugänglichste Einführung in Ehrhart-Quasi-Polynome (Kap.~3--4).
+    Die oszillierende Parabel $f(n) = \frac{1}{4}(12n^2-6n+(-1)^n(4n-1)+1)$
+    ist ein Quasi-Polynom der Periode~2 im Sinne von Ehrhart -- die
+    $(-1)^n$-Korrektur codiert den Wechsel zwischen den Kongruenzklassen
+    $n \equiv 1,5\pmod{6}$.}
+}
+
+% ── Ulam-Spirale ──────────────────────────────────────────────────────
+
+@article{Stein1964,
+  author    = {Stein, M. L. and Ulam, S. M. and Wells, M. B.},
+  title     = {A Visual Display of Some Properties of the Distribution of Primes},
+  journal   = {The American Mathematical Monthly},
+  volume    = {71},
+  number    = {5},
+  pages     = {516--520},
+  year      = {1964},
+  doi       = {10.2307/2312588},
+  annotation = {Originalpublikation der Ulam-Spirale. Die empirisch beobachteten
+    Diagonalen auf dem quadratischen Gitter bilden den Kontrast zur
+    vorliegenden Arbeit, die eine algebraisch hergeleitete (nicht
+    empirisch entdeckte) Spiralstruktur liefert.}
+}
+
+% ── Sacks-Spirale ─────────────────────────────────────────────────────
+
+@misc{Sacks2003,
+  author       = {Sacks, Robert},
+  title        = {The Number Spiral},
+  howpublished = {\url{https://www.numberspiral.com}},
+  year         = {2003},
+  annotation   = {Die Sacks-Spirale ordnet natürliche Zahlen auf einer
+    archimedischen Spirale mit $r = \sqrt{n}$ an. Im Gegensatz zur
+    vorliegenden Konstruktion ist die Sacks-Spirale rein empirisch
+    motiviert und besitzt keine geschlossene Parametrisierung der
+    ganzzahligen Punkte.}
+}
+
+% ── Klassische Differentialgeometrie ──────────────────────────────────
+
+@book{Struik1988,
+  author    = {Struik, Dirk J.},
+  title     = {Lectures on Classical Differential Geometry},
+  edition   = {2},
+  publisher = {Dover Publications},
+  address   = {New York},
+  year      = {1988},
+  isbn      = {978-0-486-65609-0},
+  annotation = {Standardreferenz für die Differentialgeometrie von Raumkurven,
+    insbesondere für konische Helices. Ergänzt do~Carmo (1976) mit
+    expliziten Formeln für Krümmung und Torsion auf Kegelmänteln.}
+}
+
+% ── Algebraische Zahlentheorie ────────────────────────────────────────
+
+@book{IrelandRosen1990,
+  author    = {Ireland, Kenneth and Rosen, Michael},
+  title     = {A Classical Introduction to Modern Number Theory},
+  edition   = {2},
+  publisher = {Springer},
+  series    = {Graduate Texts in Mathematics},
+  volume    = {84},
+  year      = {1990},
+  isbn      = {978-0-387-97329-6},
+  annotation = {Ergänzende Standardreferenz zur Zahlentheorie. Kap.~1
+    behandelt die Kongruenzklassenstruktur und den Satz, dass alle
+    Primzahlen $p > 3$ in $\{1, 5\} \pmod{6}$ liegen.}
+}
+
+% ── Baseler Problem ───────────────────────────────────────────────────
+
+@article{Euler1740,
+  author    = {Euler, Leonhard},
+  title     = {De summis serierum reciprocarum},
+  journal   = {Commentarii academiae scientiarum Petropolitanae},
+  volume    = {7},
+  pages     = {123--134},
+  year      = {1740},
+  note      = {Vorgelegt 1735, publiziert 1740},
+  annotation = {Eulers Originalbeweis des Baseler Problems
+    $\sum_{n=1}^{\infty} 1/n^2 = \pi^2/6$, dessen Kehrwert
+    $6/\pi^2 = 1/\zeta(2)$ als Spiralkonstante $a$ in der
+    vorliegenden Arbeit erscheint.}
+}
+
+% ── Desmos ────────────────────────────────────────────────────────────
+
+@misc{Desmos2024,
+  author       = {{Desmos, Inc.}},
+  title        = {Desmos Graphing Calculator},
+  howpublished = {\url{https://www.desmos.com/calculator}},
+  year         = {2024},
+  annotation   = {Online-Werkzeug zur interaktiven Visualisierung der
+    archimedischen Spirale und der äquidistanten Punktverteilung.
+    Die in Kap.~16 gezeigten Strahlenstrukturen wurden mit Desmos erstellt.}
+}
+

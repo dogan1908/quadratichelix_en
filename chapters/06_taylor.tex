@@ -1,0 +1,77 @@
+\chapter{Taylor Expansion of the Arc Length}\label{ch:taylor}
+
+
+\section{Taylor Expansion of \texorpdfstring{$\sqrt{1+x}$}{sqrt(1+x)}}
+
+The Taylor series about $x=0$ reads:
+\begin{equation}
+\sqrt{1+x}
+= 1 + \frac{x}{2} - \frac{x^2}{8} + \frac{x^3}{16}
+  - \frac{5x^4}{128} + \mathcal{O}(x^5).
+\end{equation}
+
+Setting
+\[
+x = \frac{3}{\pi^2 p}
+\]
+we obtain:
+\begin{equation}
+\sqrt{1 + \frac{3}{\pi^2 p}}
+= 1
++ \frac{3}{2\pi^2 p}
+- \frac{9}{8\pi^4 p^2}
++ \frac{27}{16\pi^6 p^3}
++ \mathcal{O}(p^{-4}).
+\end{equation}
+
+\section{Term-by-Term Integration}
+
+We integrate the individual terms:
+\begin{enumerate}
+\item $\displaystyle \int 1\, dp = p$
+\item $\displaystyle \int \frac{3}{2\pi^2 p}\, dp
+= \frac{3}{2\pi^2}\ln(p)$
+\item $\displaystyle \int -\frac{9}{8\pi^4 p^2}\, dp
+= \frac{9}{8\pi^4 p}$
+\item $\displaystyle \int \frac{27}{16\pi^6 p^3}\, dp
+= -\frac{27}{32\pi^6 p^2}$
+\end{enumerate}
+
+\section{Approximation Formula}
+
+\begin{theorem}[Taylor Approximation of the Arc Length]\label{thm:taylor-arc-length}
+\begin{equation}
+\boxed{
+L \approx (p_2 - p_1)
++ \frac{3}{2\pi^2}\ln\!\left(\frac{p_2}{p_1}\right)
++ \frac{9}{8\pi^4}\left(\frac{1}{p_1} - \frac{1}{p_2}\right)
+}
+\end{equation}
+\end{theorem}
+
+\section{Coefficients --- Numerical Values}
+
+\begin{align}
+\frac{3}{2\pi^2}
+&= \frac{3}{2 \cdot 9.869604401089}
+= 0.151981775464, \\[6pt]
+\frac{9}{8\pi^4}
+&= \frac{9}{8 \cdot 97.409091034002}
+= 0.011549230037.
+\end{align}
+
+\section{Convergence Behaviour}
+
+For large $p$ we have:
+\[
+\frac{L}{p_2 - p_1}
+= 1
++ \frac{3}{2\pi^2}
+  \cdot \frac{\ln(p_2/p_1)}{p_2 - p_1}
++ \mathcal{O}\!\left(\frac{1}{p}\right).
+\]
+
+Hence the arc length converges to the Euclidean distance:
+\[
+\lim_{p\to\infty} \left[L(p,p+\Delta p) - \Delta p\right] = 0.
+\]
