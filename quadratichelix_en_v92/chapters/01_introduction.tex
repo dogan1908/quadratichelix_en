@@ -1,0 +1,87 @@
+\chapter{Introduction}
+
+Quadratic integer sequences play a central role in number theory,
+particularly in the study of congruence properties, polygonal numbers,
+and prime number distributions. The present work considers the special
+quadratic sequence
+\begin{equation}\label{eq:k_main}
+k(n) = \frac{1}{6}(2n^2 + 3n + 1),
+\end{equation}
+which possesses a Diophantine property: it takes integer
+values if and only if $n$ lies in the congruence classes
+\begin{equation}\label{eq:congruence}
+n \equiv 1, 5 \pmod{6}.
+\end{equation}
+
+These two classes are of fundamental number-theoretic significance, as they
+contain all prime numbers greater than~$3$ (Theorem~\ref{satz:primzahlen} in
+Chapter~\ref{sec:arithmetik}).
+
+\section*{Motivation and Objectives}
+
+The geometric visualisation of number-theoretic structures has a long
+tradition and has led to significant insights. Well-known examples include:
+\begin{itemize}[leftmargin=2em]
+\item The \emph{Ulam spiral}~\cite{Stein1964}
+\item The \emph{Sacks spiral}~\cite{Sacks2003}
+\item Quadratic forms in prime number theory
+\end{itemize}
+
+While the Ulam and Sacks spirals are primarily empirically motivated ---
+patterns observed first, explanations sought afterwards --- the theory of
+quadratic forms represents the complementary algebraic tradition; indeed,
+the diagonal patterns of the former are governed by quadratic polynomials.
+The present work pursues this second direction:
+starting from the quadratic sequence~\eqref{eq:k_main}, a geometric
+structure is \emph{derived}, not merely visualised. The contribution is accordingly a geometric synthesis of known arithmetic building blocks along a single derivation path, rather than new number theory.
+
+\clearpage
+
+\section*{Main Results}
+
+The central results of this work are:
+\begin{enumerate}
+\item Alternating minor and major steps with closed-form formulae
+\item Circle circumferences with constant radius difference $\Delta R = \frac{12}{\pi}$
+\item Archimedean spiral $r(\theta) = \frac{6}{\pi^2}\theta$
+\item Parametrisation via $p$: $r(p)=\frac{6}{\pi}\sqrt{p/3}$, $\theta(p)=\pi\sqrt{p/3}$
+\item Exact arc-length integral
+\item Conical helix as a 3D embedding
+\item All primes $p>3$ appear as a distinguished discrete subset of the helix (corollary of the congruence class structure)
+\end{enumerate}
+
+\section*{Structure of the Work}
+
+The work is organised into five parts, mirroring the derivation path.
+\textbf{Part~I}, \emph{The Parabola}
+(Chapters~\ref{sec:arithmetik}--\ref{sec:distanz_sequenzen}), develops
+the arithmetic foundations: congruence condition, the closed-form step
+formulae, and Euclidean distances. \textbf{Part~II}, \emph{The
+Archimedean Spiral} (Chapters~\ref{sec:spirale}--\ref{ch:taylor}),
+derives the spiral from the minimality of the pairing and treats
+parametrisation, arc length, and the Taylor approximation.
+\textbf{Part~III}, \emph{The Cone} (Chapters~\ref{ch:cone}
+and~\ref{sec:kegelstrahlen}), constructs the enveloping cone and its ray
+geometry. \textbf{Part~IV}, \emph{The Conical Helix}
+(Chapters~\ref{ch:helix}--\ref{ch:examples}), assembles the helix,
+derives the prime number corollary, and verifies the arc lengths.
+\textbf{Part~V}, \emph{The Direct Solution}
+(Chapter~\ref{sec:visualisierung} onwards), presents the exact
+$Q$-parametrisation, the direct parabola--helix construction
+(Chapter~\ref{ch:parabola_helix}), the summary
+(Chapter~\ref{sec:zusammenfassung}), and the formula collection.
+
+\section*{Notation}
+
+\begin{itemize}[leftmargin=2em]
+\item $k(n)$: quadratic mean-value sequence
+\item $\delta_k$: difference sequence of the integer values
+\item $\Delta_{\mathrm{Major}},\ \Delta_{\mathrm{Minor}}$: major and minor step sizes
+\item $a_k$: closed-form generator of $(\delta_k)$
+\item $Q(k) = \sqrt{48k+1}$: universal quantity
+\item $a = 6/\pi^2$: spiral slope; $c_1 = 3/\pi$: height rate
+\item $\theta$: angular parameter
+\item $p$: function-value parameter
+\item $r(\theta)$: radius function
+\item $\gamma(\theta)$: helix parametrisation
+\end{itemize}

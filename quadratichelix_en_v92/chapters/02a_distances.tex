@@ -1,0 +1,240 @@
+\chapter{Euclidean Distances Between Function Values}
+
+This chapter investigates the geometric distances between consecutive
+integer points on the curve $k(n) = \frac{1}{6}(2n^2 + 3n + 1)$.
+
+\section{Motivation}
+
+The function takes integer values for all $n \equiv 1, 5 \pmod{6}$. This
+property allows us to consider discrete points $(n, k(n))$ on the curve.
+A natural question is: \textbf{What are the Euclidean distances between
+consecutive integer points?}
+
+\section{Point Distances in the Plane}
+
+\subsection{Definition}
+
+For two integer arguments $n_1, n_2$ with $n_1, n_2 \equiv 1, 5 \pmod{6}$,
+the points $(n_1, k(n_1))$ and $(n_2, k(n_2))$ lie on the curve.
+
+\begin{definition}[Euclidean Distance Between Curve Points]
+The Euclidean distance between two points on the curve is:
+\begin{equation}
+d(n_1, n_2) = \sqrt{(n_2 - n_1)^2 + (k(n_2) - k(n_1))^2}
+\end{equation}
+\end{definition}
+
+\subsection{Numerical Examples}
+
+\begin{example}[Distances between integer points]
+The following table shows the Euclidean distances for the first
+integer-valued pairs:
+
+\begin{table}[H]
+	\centering
+	\caption{Euclidean distances between consecutive points of
+		the sequence $n \equiv 1,5 \pmod{6}$}
+	\begin{tabular}{cccccc}
+		\toprule
+		$(n_1, n_2)$ & $\Delta n$ & $k(n_1)$ & $k(n_2)$ & Distance $d$ & Exact value \\
+		\midrule
+		$( 1,  5)$ & 4 &   1 &  11 &  10.7703296143 & $\sqrt{116}$  \\
+		$( 5,  7)$ & 2 &  11 &  20 &   9.21954445729 & $\sqrt{85}$   \\
+		$( 7, 11)$ & 4 &  20 &  46 &  26.3058928759 & $\sqrt{692}$  \\
+		$(11, 13)$ & 2 &  46 &  63 &  17.1172427686 & $\sqrt{293}$  \\
+		$(13, 17)$ & 4 &  63 & 105 &  42.1900462195 & $\sqrt{1780}$ \\
+		$(17, 19)$ & 2 & 105 & 130 &  25.0798724080 & $\sqrt{629}$  \\
+		$(19, 23)$ & 4 & 130 & 188 &  58.1377674150 & $\sqrt{3380}$ \\
+		$(23, 25)$ & 2 & 188 & 221 &  33.0605505096 & $\sqrt{1093}$ \\  % 25 = 5² composite
+		$(25, 29)$ & 4 & 221 & 295 &  74.1080292546 & $\sqrt{5492}$ \\
+		$(29, 31)$ & 2 & 295 & 336 &  41.0487515035 & $\sqrt{1685}$ \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+\end{example}
+
+\section{Closed-Form Formulae}
+
+\subsection{Exact Distance Formula}
+
+\begin{proposition}[Closed-form formula for the distance]
+With $k(n) = \frac{1}{6}(2n^2 + 3n + 1)$ and $\Delta n = n_2 - n_1$:
+\begin{align}
+k(n_2) - k(n_1) &= \frac{\Delta n}{6}(4n_1 + 2\Delta n + 3)
+\end{align}
+
+Hence:
+\begin{equation}
+d(n_1, n_1 + \Delta n) = \Delta n \cdot \sqrt{1 + \frac{1}{36}(4n_1 + 2\Delta n + 3)^2}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Direct computation:
+\begin{align}
+k(n_2) - k(n_1) &= \frac{1}{6}[2(n_2^2 - n_1^2) + 3(n_2 - n_1)]\\
+&= \frac{1}{6}[2(n_2 - n_1)(n_2 + n_1) + 3(n_2 - n_1)]\\
+&= \frac{\Delta n}{6}[2(2n_1 + \Delta n) + 3]\\
+&= \frac{\Delta n}{6}(4n_1 + 2\Delta n + 3)
+\end{align}
+
+Substitution into the distance formula yields the claim.
+\end{proof}
+
+
+\subsection{Special Cases}
+
+% ── Δn = 2 and Δn = 4 side by side ─────────────────────────
+\noindent
+\begin{minipage}[t]{0.48\textwidth}
+
+\subsubsection{Case $\Delta n = 2$}
+
+\begin{equation}
+d(n, n+2) = 2\sqrt{1 + \frac{1}{36}(4n + 7)^2}
+\end{equation}
+
+\begin{example}[Numerical values for $\Delta n = 2$]
+\begin{table}[H]
+\centering
+\begin{tabular}{cc}
+\toprule
+$n_1$ & Distance $d$ \\
+\midrule
+5  & 9.2195444573  \\
+11 & 17.1172427686 \\
+17 & 25.0798724080 \\
+23 & 33.0605505096 \\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{example}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+
+\subsubsection{Case $\Delta n = 4$}
+
+\begin{equation}
+d(n, n+4) = 4\sqrt{1 + \frac{1}{36}(4n + 11)^2}
+\end{equation}
+
+\begin{example}[Numerical values for $\Delta n = 4$]
+\begin{table}[H]
+\centering
+\begin{tabular}{cc}
+\toprule
+$n_1$ & Distance $d$ \\
+\midrule
+1  & 10.7703296143 \\
+7  & 26.3058928759 \\
+13 & 42.1900462195 \\
+19 & 58.1377674150 \\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{example}
+
+\end{minipage}
+% ─────────────────────────────────────────────────────────────
+
+\subsubsection{Case $\Delta n = 6$}
+
+\begin{equation}
+d(n, n+6) = 6\sqrt{1 + \frac{1}{36}(4n + 15)^2}
+\end{equation}
+
+\begin{remark}
+The case $\Delta n = 6$ corresponds to a full period in the congruence
+structure modulo~$6$. Geometrically, this means a jump across both
+congruence classes.
+\end{remark}
+
+\section{Comparison: Distance vs.\ Arc Length}
+
+The Euclidean distance $d$ between two points is always less than or equal to
+the arc length $L$ along the curve, since the straight line represents the
+shortest possible path. This is a fundamental metric property.
+
+\begin{proposition}[Distance as a lower bound]
+For $n_1 < n_2$ it always holds that:
+\begin{equation}
+d(n_1, n_2) \leq L[n_1, n_2]
+\end{equation}
+where $L[n_1, n_2] = \int_{n_1}^{n_2} \sqrt{1 + [k'(x)]^2}\, dx$ is the arc length.
+\end{proposition}
+
+\begin{example}[Comparison: distance vs.\ arc length]
+\begin{table}[H]
+\centering
+\caption{Euclidean distance compared with arc length}
+\begin{tabular}{ccccc}
+\toprule
+Interval & Distance $d$ & Arc length $L$ & Ratio $d/L$ & $L - d$ \\
+\midrule
+$[1, 5]$   & 10.7703296143 & 10.8394091489 & 0.9936270018 & $6.908 \cdot 10^{-2}$ \\
+$[5, 7]$   &  9.2195444573 &  9.2210749306 & 0.9998340244 & $1.530 \cdot 10^{-3}$ \\
+$[7, 11]$  & 26.3058928759 & 26.3101623759 & 0.9998377243 & $4.270 \cdot 10^{-3}$ \\
+$[11, 13]$ & 17.1172427686 & 17.1174799293 & 0.9999861451 & $2.372 \cdot 10^{-4}$ \\
+$[13, 17]$ & 42.1900462195 & 42.1910659377 & 0.9999758309 & $1.020 \cdot 10^{-3}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Observation:} The ratio $d/L$ is in all cases $\leq 1$, as
+guaranteed by the proposition. For short intervals ($\Delta n = 2$), distance
+and arc length are nearly identical, since the curve is locally almost
+rectilinear. The deviation is somewhat larger for small $n$ (more strongly
+curved region) and approaches the value~$1$ for large $n$.
+\end{example}
+
+\section{Distance Sequence}
+
+Consider the sequence of all consecutive distances:
+
+\begin{definition}[Distance Sequence]
+Let $\{n_k\}$ be the ascending sequence of all integer arguments of $k(n)$
+(i.e.\ $n_k \equiv 1, 5 \pmod{6}$, cf.\ Chapter~\ref{sec:arithmetik}).
+Then we define:
+\begin{equation}
+\{d_k\} = \{d(n_k, n_{k+1})\}_{k=1}^{\infty}
+\end{equation}
+\end{definition}
+
+\begin{example}[The first terms]
+With $n_1 = 1, n_2 = 5, n_3 = 7, n_4 = 11, \ldots$ we obtain:
+\[
+\{d_k\} = \{10.7703,\ 9.2195,\ 26.3059,\ 17.1172,\ 42.1900,\ 25.0799,\ \ldots\}
+\]
+\end{example}
+
+\begin{remark}[Irregularity]
+The sequence $\{d_k\}$ is not monotone, since the spacings
+$\Delta n_k = n_{k+1} - n_k$ alternate between $2$ and $4$. However, the
+sequence exhibits a clear growth pattern: both the local maxima and the local
+minima increase monotonically with $k$.
+\end{remark}
+
+\section{Summary}
+
+\begin{table}[H]
+\centering
+\caption{Distance properties by $\Delta n$}
+\begin{tabular}{ccc}
+\toprule
+$\Delta n$ & Type & Distance formula \\
+\midrule
+2 & Adjacent values (minor) & $2\sqrt{1 + \frac{(4n+7)^2}{36}}$ \\
+4 & Congruence class change (major) & $4\sqrt{1 + \frac{(4n+11)^2}{36}}$ \\
+6 & Full period & $6\sqrt{1 + \frac{(4n+15)^2}{36}}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{remark}[Significance]
+The distance analysis shows that the geometric spacings between integer
+function values exhibit a clear pattern directly linked to the congruence
+structure modulo~$6$. For large $n$, all distances grow proportionally to $n$,
+with the proportionality factor depending on $\Delta n$.
+\end{remark}

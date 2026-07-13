@@ -1,0 +1,101 @@
+% ══════════════════════════════════════════════════════════════════════════
+% NEW REMARKS — insert after \end{remark} of the Erdős–Shapiro remark
+% (rem:erdos_shapiro) in chapters/03_spiral.tex
+% ══════════════════════════════════════════════════════════════════════════
+
+\begin{remark}[Visible lattice points and squarefree numbers]
+\label{rem:visible_squarefree}
+Two further classical interpretations of the constant $6/\pi^2$ deserve
+mention, since both are geometric in nature and thus close to the spirit
+of the present construction (see~\cite{Hardy2008}).
+
+First, a lattice point $(x,y) \in \mathbb{Z}^2$ is called \emph{visible}
+from the origin if no other lattice point lies on the open segment
+between the origin and $(x,y)$; this holds precisely when
+$\gcd(x,y)=1$. The density of visible points among all lattice points is
+\begin{equation}
+  \lim_{R \to \infty}
+  \frac{\#\{(x,y) : \|(x,y)\| \leqslant R,\ \gcd(x,y)=1\}}
+       {\#\{(x,y) : \|(x,y)\| \leqslant R\}}
+  = \frac{6}{\pi^2}.
+\end{equation}
+
+Second, the density of the squarefree integers is likewise
+\begin{equation}
+  \lim_{x \to \infty} \frac{\#\{n \leqslant x : n \text{ squarefree}\}}{x}
+  = \prod_{p} \Bigl(1 - \frac{1}{p^2}\Bigr)
+  = \frac{1}{\zeta(2)} = \frac{6}{\pi^2},
+\end{equation}
+where the Euler product on the left is term by term the same product
+that yields the spiral constant~$a$ in the present work.
+
+The list of interpretations of the slope~$a$ thus extends to five: the
+reciprocal of $\zeta(2)$, the mean coprimality density
+(Remark~\ref{rem:euler_coprimality}), the density of visible lattice
+points, the density of squarefree integers, and the slope of the
+Archimedean spiral derived here. The visible-point interpretation is
+noteworthy in the present context because it is itself a statement about
+straight lines through integer points of the plane --- the same
+raw material from which the spiral is built. Whether this analogy can be
+made structural is an open question of this work, not an established
+result.
+\end{remark}
+
+\begin{remark}[Farey fractions and the Franel--Landau criterion]
+\label{rem:farey_franel}
+The Farey sequence $F_N$ consists of all reduced fractions in $[0,1]$
+with denominator at most~$N$. Its cardinality satisfies
+\begin{equation}\label{eq:farey_count}
+  |F_N| = 1 + \sum_{n \leqslant N} \varphi(n)
+        \;\sim\; \frac{3}{\pi^2}\,N^2
+        \;=\; \frac{a}{2}\,N^2 ,
+\end{equation}
+with the same coefficient $a/2$ that appears in the arc-length
+asymptotics $s(\theta) \approx \tfrac{a}{2}\theta^2$ of the spiral
+(Chapter~\ref{sec:bogenlaenge_spirale}). Both statements are counting
+results governed by the mean of $\varphi$; the identical quadratic
+form is recorded here as a formal correspondence, without a claim
+that the two counts measure the same quantity.
+
+The connection to the Riemann zeta function is provided by the
+Franel--Landau criterion~\cite{Franel1924, Landau1924}: writing
+$f_1 < f_2 < \cdots < f_{|F_N|}$ for the elements of $F_N$ and
+$\delta_j = f_j - j/|F_N|$ for their deviations from perfect
+equidistribution, the Riemann hypothesis is \emph{equivalent} to
+\begin{equation}
+  \sum_{j=1}^{|F_N|} |\delta_j| = O\bigl(N^{1/2+\varepsilon}\bigr)
+  \qquad \text{for every } \varepsilon > 0.
+\end{equation}
+The quality of the equidistribution of the reduced fractions --- the
+same arithmetic objects whose count carries the coefficient $a/2$ ---
+therefore encodes the position of the nontrivial zeros of
+$\zeta(s)$.
+\end{remark}
+
+\begin{remark}[Mertens' theorem and the Euler--Mascheroni constant]
+\label{rem:mertens_gamma}
+The spiral constant is the convergent second-power Euler product
+$a = \prod_p (1 - p^{-2})$. Its first-power counterpart does not
+converge to a positive limit; instead, Mertens'
+theorem~\cite{Mertens1874} states
+\begin{equation}\label{eq:mertens}
+  \prod_{p \leqslant x} \Bigl(1 - \frac{1}{p}\Bigr)
+  \;\sim\; \frac{e^{-\gamma}}{\ln x}
+  \qquad (x \to \infty),
+\end{equation}
+where $\gamma = 0.5772156649\ldots$ is the Euler--Mascheroni constant.
+The partial product on the left is the density of integers free of
+prime factors $\leqslant x$; for $x = 3$ it equals
+$(1-\tfrac12)(1-\tfrac13) = \tfrac13 = \varphi(6)/6$, the local
+coprimality ratio of the congruence classes $n \equiv 1,5 \pmod 6$ on
+which the sequence $k(n)$ is integer-valued.
+
+The two products thus continue the same local datum in two different
+ways: with squared factors the product converges and yields the spiral
+constant~$a$; with first powers it decays logarithmically, and
+$\gamma$ is the constant that calibrates this decay. The constant
+$\gamma$ is tied to $\zeta$ at its pole through the Laurent expansion
+$\zeta(s) = \frac{1}{s-1} + \gamma + O(s-1)$, while $a$ evaluates
+$1/\zeta$ at $s = 2$; the pair $(\gamma, a)$ therefore probes the same
+function at its two arithmetically distinguished points.
+\end{remark}

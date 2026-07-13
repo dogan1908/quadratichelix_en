@@ -1,0 +1,322 @@
+\chapter{Arc Length of the Plane Archimedean Spiral: Two Methods}
+\label{sec:bogenlaenge_spirale}
+
+In this chapter the arc length of the Archimedean spiral
+$r(\theta) = \frac{6}{\pi^2}\,\theta$ is computed by two entirely different
+approaches and the results are compared numerically. This serves both for
+mutual verification and for the conceptual clarification of how the
+$\theta$-parametrisation and the $p$-parametrisation are related. Throughout
+the numerical tables the decimal point is used consistently.
+
+The intervals under consideration are the minor steps between the
+integer indices $n \equiv 1, 5 \pmod 6$:
+\[
+(n_1, n_2) \in
+\{(5,7),\;(11,13),\;(17,19),\;(23,25),\;(29,31),\;(35,37),\;(41,43)\}.
+\]
+In each case $n_1 \equiv 5 \pmod 6$ and $n_2 \equiv 1 \pmod 6$, so these
+are always minor steps with $\Delta n = 2$.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Method A: Direct Computation via the Closed-Form Arc-Length Formula}
+\label{sec:methode_A}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{Derivation of the Formula}
+
+For a curve in polar coordinates $r = r(\theta)$ the arc-length
+element reads
+\[
+ds = \sqrt{r(\theta)^2 + \left(\frac{dr}{d\theta}\right)^2}\,d\theta.
+\]
+With $r(\theta) = a\theta$ and $\frac{dr}{d\theta} = a$ (where $a = \frac{6}{\pi^2}$):
+\[
+ds = \sqrt{a^2\theta^2 + a^2}\,d\theta = a\sqrt{\theta^2 + 1}\,d\theta.
+\]
+
+The arc-length integral between two angles $\theta_1$ and $\theta_2$ is therefore:
+\[
+L_A(\theta_1, \theta_2)
+= a\int_{\theta_1}^{\theta_2}\sqrt{\theta^2 + 1}\,d\theta.
+\]
+
+This integral admits a closed form. Using the standard formula
+\[
+\int \sqrt{u^2+1}\,du
+= \frac{1}{2}\Bigl[u\sqrt{u^2+1} + \operatorname{arcsinh}(u)\Bigr] + C
+\]
+we obtain the antiderivative $F(\theta) = \frac{a}{2}\bigl[\theta\sqrt{\theta^2+1}
++ \operatorname{arcsinh}(\theta)\bigr]$ and hence the exact, closed-form arc length:
+
+\begin{theorem}[Arc length of the Archimedean spiral, closed form]
+\label{satz:bogenlaenge_geschlossen}
+For $r(\theta) = a\theta$ with $a = \frac{6}{\pi^2}$:
+\begin{equation}
+\boxed{
+L_A(\theta_1, \theta_2)
+= \frac{a}{2}\Bigl[\theta\sqrt{\theta^2+1} + \operatorname{arcsinh}(\theta)\Bigr]_{\theta_1}^{\theta_2}.
+}
+\end{equation}
+\end{theorem}
+
+\subsection{Assignment of Angle Values to the Indices}
+
+The angle values $\theta_n$ at the integer points of the helix are
+\[
+\theta_n = \frac{\pi}{3}\,n + \frac{\pi}{4} = \frac{(4n+3)\pi}{12}.
+\]
+As exact fractions of $\pi$:
+
+\begin{center}
+\begin{tabular}{ccccc}
+\toprule
+$n_1$ & $\theta_{n_1} = \frac{(4n_1+3)\pi}{12}$ & $n_2$ & $\theta_{n_2} = \frac{(4n_2+3)\pi}{12}$ & $\Delta\theta = \frac{2\pi}{3}$ \\
+\midrule
+ 5 & $\frac{23\pi}{12}$ &  7 & $\frac{31\pi}{12}$ & $\frac{8\pi}{12} = \frac{2\pi}{3}$ \\
+11 & $\frac{47\pi}{12}$ & 13 & $\frac{55\pi}{12}$ & $\frac{2\pi}{3}$ \\
+17 & $\frac{71\pi}{12}$ & 19 & $\frac{79\pi}{12}$ & $\frac{2\pi}{3}$ \\
+23 & $\frac{95\pi}{12}$ & 25 & $\frac{103\pi}{12}$ & $\frac{2\pi}{3}$ \\
+29 & $\frac{119\pi}{12}$ & 31 & $\frac{127\pi}{12}$ & $\frac{2\pi}{3}$ \\
+35 & $\frac{143\pi}{12}$ & 37 & $\frac{151\pi}{12}$ & $\frac{2\pi}{3}$ \\
+41 & $\frac{167\pi}{12}$ & 43 & $\frac{175\pi}{12}$ & $\frac{2\pi}{3}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{remark}[Constant angular spacing]
+All minor steps (i.e.\ $\Delta n = 2$) produce the same angular spacing
+$\Delta\theta = \frac{2\pi}{3}$, since
+\[
+  \theta_{n+2} - \theta_n
+  = \frac{\pi}{3}(n+2) + \frac{\pi}{4} - \frac{\pi}{3}n - \frac{\pi}{4}
+  = \frac{2\pi}{3}.
+\]
+The spiral traverses exactly $\frac{1}{3}$ of a full revolution per minor step.
+The angular spacing is thus identical for all intervals under consideration;
+nevertheless, the arc length grows monotonically, since for the same
+$\Delta\theta$ the arc on a larger radius is longer.
+\end{remark}
+
+\subsection{Numerical Results for Method A}
+
+\begin{table}[H]
+\centering
+\caption{Arc length by Method~A: closed-form formula
+  $L_A = \frac{a}{2}[\theta\sqrt{\theta^2+1}+\operatorname{arcsinh}(\theta)]_{\theta_1}^{\theta_2}$
+  with $a = 6/\pi^2$.}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{ccccc}
+\toprule
+$(n_1, n_2)$ & $\theta_1$ (num.) & $\theta_2$ (num.) & $L_A$ \\
+\midrule
+$( 5,  7)$ & 6.02138592 &  8.11578102 &  9.09026487 \\
+$(11, 13)$ & 12.30457123 & 14.39896633 & 17.04771118 \\
+$(17, 19)$ & 18.58775653 & 20.68215164 & 25.03243246 \\
+$(23, 25)$ & 24.87094184 & 26.96533694 & 33.02456693 \\
+$(29, 31)$ & 31.15412715 & 33.24852225 & 41.01977219 \\
+$(35, 37)$ & 37.43731245 & 39.53170755 & 49.01654352 \\
+$(41, 43)$ & 43.72049776 & 45.81489286 & 57.01422134 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{remark}[Growth rate of the arc length]
+The arc lengths grow approximately proportionally to the mean $\theta$-value.
+For large $\theta$ the linear term in $\sqrt{\theta^2+1} \approx \theta$
+dominates, so that
+\[
+  L_A \approx a\int_{\theta_1}^{\theta_2}\theta\,d\theta
+  = \frac{a}{2}(\theta_2^2 - \theta_1^2)
+  = \frac{a}{2}(\theta_2+\theta_1)\Delta\theta.
+\]
+With $\Delta\theta = \frac{2\pi}{3}$ and increasing
+$\bar\theta = \frac{\theta_1+\theta_2}{2}$, a linear growth
+in $\bar\theta$ results. The difference between two consecutive
+arc lengths is therefore approximately
+$a \cdot \frac{2\pi}{3} \cdot 2\pi = a \cdot \frac{4\pi^2}{3} = 8$ per
+period of the indices (from $n$ to $n+6$). Numerically:
+$25.032 - 17.048 = 7.985$, $33.025 - 25.032 = 7.993$
+etc.\ --- this convergence confirms the asymptotics.
+\end{remark}
+
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Method B: Arc Length via the $p$-Parametrisation}
+\label{sec:methode_B}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{Derivation of the Integral}
+
+In Chapter~\ref{sec:bogenlaenge} the arc-length integral in the
+$p$-parametrisation was derived. Since $r(p) = \frac{6}{\pi\sqrt{3}}\sqrt{p}$ and
+$\theta(p) = \frac{\pi}{\sqrt{3}}\sqrt{p}$, the computation of the
+arc-length element yields:
+\[
+\left(\frac{dr}{dp}\right)^2 = \frac{3}{\pi^2 p},
+\qquad
+r^2\!\left(\frac{d\theta}{dp}\right)^2 = 1,
+\]
+and hence:
+\begin{equation}
+\label{eq:bogenlaenge_p}
+L_B(p_1, p_2)
+= \int_{p_1}^{p_2}
+  \frac{1}{\pi}\sqrt{\frac{3}{p} + \pi^2}\,dp.
+\end{equation}
+
+The points in the $p$-parametrisation correspond to the function values
+$p = k(n)$:
+
+\begin{center}
+\begin{tabular}{ccccc}
+\toprule
+$n_1$ & $p_1 = k(n_1)$ & $n_2$ & $p_2 = k(n_2)$ & $\Delta p = p_2 - p_1$ \\
+\midrule
+ 5 & 11  &  7 & 20  & 9  \\
+11 & 46  & 13 & 63  & 17 \\
+17 & 105 & 19 & 130 & 25 \\
+23 & 188 & 25 & 221 & 33 \\
+29 & 295 & 31 & 336 & 41 \\
+35 & 426 & 37 & 475 & 49 \\
+41 & 581 & 43 & 638 & 57 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{remark}[Growth of the $\Delta p$ values]
+The values $\Delta p = p_2 - p_1$ are precisely the minor steps of the
+difference sequence:
+\[
+\Delta p_m = \Delta_{\mathrm{Minor}}(m) = 8m + 1, \qquad m = 1, 2, 3, \ldots
+\]
+For $m=1$: $\Delta p = 9$, for $m=2$: $\Delta p = 17$, and so on.
+The function values $p$ grow quadratically in $n$, while $\Delta p$
+grows only linearly. This implies that for large $p$ the quotient
+$\Delta p / p$ tends to zero --- the integrand term $\frac{3}{p}$ then
+becomes negligible compared with $\pi^2$, and the integral approaches the
+Euclidean value $\Delta p$.
+\end{remark}
+
+\subsection{Numerical Results for Method B}
+
+\begin{table}[H]
+\centering
+\caption{Arc length by Method~B: numerical integral
+  $L_B = \int_{p_1}^{p_2} \frac{1}{\pi}\sqrt{\frac{3}{p}+\pi^2}\,dp$.}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{cccccc}
+\toprule
+$(n_1, n_2)$ & $p_1 = k(n_1)$ & $p_2 = k(n_2)$ & $\Delta p$ & $L_B$ \\
+\midrule
+$( 5,  7)$ &  11 &  20 &  9 &  9.09039285 \\
+$(11, 13)$ &  46 &  63 & 17 & 17.04772970 \\
+$(17, 19)$ & 105 & 130 & 25 & 25.03243825 \\
+$(23, 25)$ & 188 & 221 & 33 & 33.02456944 \\
+$(29, 31)$ & 295 & 336 & 41 & 41.01977350 \\
+$(35, 37)$ & 426 & 475 & 49 & 49.01654429 \\
+$(41, 43)$ & 581 & 638 & 57 & 57.01422182 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Direct Comparison: Method A vs.\ Method B}
+\label{sec:methoden_vergleich}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\begin{table}[H]
+\centering
+\caption{Comparison of arc lengths: Method~A (closed-form $\theta$-formula)
+  vs.\ Method~B ($p$-integral). The deviation $\delta = (L_B - L_A)/L_A$
+  is positive and decreases monotonically through the computed range towards zero.}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{cccccc}
+\toprule
+$(n_1, n_2)$ & $L_A$ & $L_B$ & $L_B - L_A$ & $\delta$ (\%) \\
+\midrule
+$( 5,  7)$ &  9.09026487 &  9.09039285 & +0.00012798 & +0.00141 \\
+$(11, 13)$ & 17.04771118 & 17.04772970 & +0.00001852 & +0.00011 \\
+$(17, 19)$ & 25.03243246 & 25.03243825 & +0.00000579 & +0.00002 \\
+$(23, 25)$ & 33.02456693 & 33.02456944 & +0.00000251 & +0.00001 \\
+$(29, 31)$ & 41.01977219 & 41.01977350 & +0.00000131 & +0.00000 \\
+$(35, 37)$ & 49.01654352 & 49.01654429 & +0.00000077 & +0.00000 \\
+$(41, 43)$ & 57.01422134 & 57.01422182 & +0.00000048 & +0.00000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{proposition}[Agreement of the methods]
+\label{prop:methoden_uebereinstimmung}
+The two computational methods yield numerically almost identical results.
+The relative deviation $\delta = (L_B - L_A)/L_A$ is positive in all computed intervals and converges to zero:
+\[
+\delta(5 \to 7) = 0.00141\,\%,\quad
+\delta(11 \to 13) = 0.00011\,\%,\quad
+\delta(41 \to 43) < 0.000005\,\%.
+\]
+\end{proposition}
+
+\begin{remark}[Explanation of the small positive deviation]
+The deviation stems from the fact that the $p$-parametrisation is only
+\emph{asymptotically} arc-length preserving: the inversion $p = L(\theta)$
+holds asymptotically for large $\theta$, not for small ones. For the first interval
+($p_1 = 11$, $p_2 = 20$) the correction is still measurable; for
+$p \gtrsim 100$ it is negligible for all practical purposes.
+
+Analytically, this can be understood as follows: the arc-length element in the
+$p$-parametrisation is (as derived in Chapter~\ref{sec:bogenlaenge})
+\[
+ds = \frac{1}{\pi}\sqrt{\frac{3}{p}+\pi^2}\,dp
+   = \sqrt{1 + \frac{3}{\pi^2 p}}\,dp,
+\]
+which shows that the speed converges to $1$ as $p \to \infty$.
+The term $\frac{3}{\pi^2 p}$ produces the positive residual deviation; it is
+approximately $0.028$ for $p_1 = 11$, but only about $0.0005$ for $p_1 = 581$.
+\end{remark}
+
+\subsection{Why the Equidistant Parametrisation Works}
+
+The central conceptual statement of this comparison is that the
+integer values $p = k(n)$ of the quadratic sequence already constitute
+a very good approximation to the arc-length values of the Archimedean
+spiral. Specifically: the step $\Delta p = p_2 - p_1 = \Delta_{\mathrm{Minor}}(m)$
+is numerically almost equal to the arc length $L_A$ of the corresponding
+spiral arc:
+
+\begin{table}[H]
+\centering
+\caption{Comparison of $\Delta p$ (arithmetic step) vs.\ $L_A$ (arc length).
+  The ratio $L_A / \Delta p$ converges to~1.}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{cccccc}
+\toprule
+$(n_1, n_2)$ & $\Delta p$ & $L_A$ & $L_A / \Delta p$ & Deviation \\
+\midrule
+$( 5,  7)$ &  9 &  9.09026 & 1.01003 & $+1.00\,\%$ \\
+$(11, 13)$ & 17 & 17.04771 & 1.00280 & $+0.28\,\%$ \\
+$(17, 19)$ & 25 & 25.03243 & 1.00130 & $+0.13\,\%$ \\
+$(23, 25)$ & 33 & 33.02457 & 1.00074 & $+0.07\,\%$ \\
+$(29, 31)$ & 41 & 41.01977 & 1.00048 & $+0.05\,\%$ \\
+$(35, 37)$ & 49 & 49.01654 & 1.00034 & $+0.03\,\%$ \\
+$(41, 43)$ & 57 & 57.01422 & 1.00025 & $+0.02\,\%$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{remark}[Geometric significance]
+This table is the numerical heart of the entire construction: it shows
+that the arithmetic steps $\Delta p = 8m+1$ of the minor difference sequence
+are not only integers but also increasingly accurate approximations of the
+arc lengths of the corresponding spiral arcs. For $m \to \infty$ one has
+$L_A / \Delta p \to 1$ --- the discrete arithmetic structure of the sequence $k(n)$
+and the continuous geometry of the Archimedean spiral merge
+asymptotically into a single description.
+
+Put differently: the construction succeeds because the
+function values $k(n)$ are not only integers that enforce the correct spiral
+constant, but simultaneously approximate arc-length parameters of the
+resulting spiral. This is a direct consequence
+of the asymptotic arc-length formula $L(\theta) \sim \frac{a}{2}\theta^2$ and
+the choice $p = k(n) \sim \frac{a}{2}\theta_n^2$.
+\end{remark}

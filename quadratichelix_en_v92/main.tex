@@ -1,0 +1,397 @@
+% ============================================================
+%  From the Quadratic Sequence to the Conical Helix
+%  Dogan Balban — February 2026
+% ============================================================
+
+\documentclass[12pt,a4paper]{report}
+
+% ── Encoding and Language ────────────────────────────────────
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{csquotes}           % For \enquote{} and biblatex
+
+% ── Bibliography ─────────────────────────────────────────────
+\usepackage[
+  backend=biber,
+  style=alphabetic,
+]{biblatex}
+\addbibresource{references.bib}
+\AtBeginBibliography{\emergencystretch=2em}
+
+% ── Mathematics ──────────────────────────────────────────────
+\usepackage{mathtools}          % Extends amsmath
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+% ── Page Layout ──────────────────────────────────────────────
+\usepackage{geometry}
+\geometry{
+  left   = 2.5cm,
+  right  = 2.5cm,
+  top    = 3.0cm,
+  bottom = 3.0cm
+}
+
+% ── Hyperlinks ───────────────────────────────────────────────
+% All links invisible (no coloured boxes),
+% but clickable in the PDF viewer.
+\usepackage[
+  colorlinks = true,
+  linkcolor  = black,   % Internal links (TOC, \ref)
+  citecolor  = black,   % Citations
+  urlcolor   = blue     % External URLs remain blue
+]{hyperref}
+
+% ── Graphics and Colours ─────────────────────────────────────
+\usepackage{graphicx}
+\graphicspath{{bilder/}}
+\usepackage[table]{xcolor}      % xcolor with table support
+                                % MUST be loaded before tcolorbox
+
+% ── Boxes ────────────────────────────────────────────────────
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+
+% ── Tables ───────────────────────────────────────────────────
+\usepackage{booktabs}           % \toprule, \midrule, \bottomrule
+\usepackage{tabularx}           % Tables with variable column widths
+\usepackage{array}              % Extended column formats
+\usepackage{float}              % [H] for fixed figure placement
+
+% ── Units and Numbers ────────────────────────────────────────
+\usepackage{siunitx}
+\sisetup{output-decimal-marker = {.}}
+
+% ── Lists ────────────────────────────────────────────────────
+\usepackage{enumitem}
+
+% ── Miscellaneous ────────────────────────────────────────────
+\usepackage{textcomp}
+\usepackage{gensymb}            % \degree
+
+% ============================================================
+%  THEOREM ENVIRONMENTS
+%  Bilingual definitions: both German and English names are
+%  defined so that cross-references from the original work
+%  remain valid.
+%
+%  English environments (primary):
+%    \begin{theorem}      Theorem 1.1
+%    \begin{lemma}        Lemma 1.2
+%    \begin{proposition}  Proposition 1.3
+%    \begin{corollary}    Corollary 1.4
+%    \begin{definition}   Definition 1.5
+%    \begin{example}      Example 1.6
+%    \begin{remark}       Remark 1.7
+%    \begin{note}         Note 1.8
+%
+%  German aliases (for backward compatibility):
+%    \begin{satz}         = Theorem
+%    \begin{korollar}     = Corollary
+%    \begin{beispiel}     = Example
+%    \begin{bemerkung}    = Remark
+%    \begin{anmerkung}    = Note
+% ============================================================
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{note}[theorem]{Note}
+
+% ── German aliases (backward compatibility) ──────────────────
+\newenvironment{satz}{\begin{theorem}}{\end{theorem}}
+\newenvironment{korollar}{\begin{corollary}}{\end{corollary}}
+\newenvironment{beispiel}{\begin{example}}{\end{example}}
+\newenvironment{bemerkung}{\begin{remark}}{\end{remark}}
+\newenvironment{anmerkung}{\begin{note}}{\end{note}}
+
+% ============================================================
+%  TITLE PAGE
+% ============================================================
+
+\title{%
+  \textbf{From the Quadratic Sequence to the Conical Helix}\\[0.8em]
+  \large
+  An Inductive Derivation:\\
+  Algebraic Geometry of the Congruence Classes $1,5\pmod{6}$
+}
+\author{Dogan Balban}
+\date{February 2026}
+
+% ============================================================
+%  DOCUMENT
+% ============================================================
+
+\begin{document}
+
+\maketitle
+
+% ── Front Matter (unnumbered) ─────────────────────────────────
+\input{chapters/abstract}
+\input{chapters/preface}
+
+\tableofcontents
+\clearpage
+
+\chapter*{Acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+
+This work arose from many hours of intensive engagement with a subject
+that revealed unexpected new dimensions with each insight. What began as
+a manageable analysis turned into a journey whose length and depth could
+not have been foreseen.
+
+My deepest gratitude goes to my family. They bore with me patiently when
+I was lost in thought, and were understanding when I was less present
+than I would have wished.
+
+I also thank those who challenged me with critical questions and thereby
+compelled me to sharpen my thinking---some of those remarks led to the
+most productive hours of this work.
+
+\clearpage
+
+% ============================================================
+%  MAIN BODY
+%
+%  The chapter order follows the order of discovery:
+%  Each object (parabola → spiral → cone → helix) is fully
+%  investigated before the next is introduced.
+%  At the end stands the direct solution without intermediate steps.
+%
+%  Transitions between parts:
+%    PART I   → PART II:   Δk pattern, minor/major formulae
+%    PART II  → PART III:  parametrisation p, Δr = 12/π
+%    PART III → PART IV:   height function z(θ), cone equation
+%    PART IV  → PART V:    θ_n = (π/3)n + π/4, Q(k)
+% ============================================================
+
+% ────────────────────────────────────────────────────────────
+\part{The Parabola --- Starting Point}
+% ────────────────────────────────────────────────────────────
+%
+% The first part follows the actual beginning of the work from
+% table values. The quadratic sequence k(n) is developed from the
+% number sequences --- in retrospect the algebraic form is confirmed.
+%
+% CARRY-OVER TO PART II: The difference structure Δk (minor/major),
+% the step-size formulae 16m−6 and 8m+1, and the insight that
+% every two consecutive steps form an arithmetic sequence.
+
+% Ch. 1 — Introduction
+\include{chapters/01_introduction}
+
+% ─────────────────────────────────────────────────────────
+% Ch. 2 — The quadratic sequence from table values
+\include{chapters/02_arithmetic}
+% ─────────────────────────────────────────────────────────
+% Arithmetic foundations, congruence condition, differences,
+% generating function, value tables.
+%
+% Ch. 3 — Euclidean distances between curve points
+% ─────────────────────────────────────────────────────────
+% The curve k(n) as a geometric object in the plane:
+% distances between integer points, distance formulae
+% for minor/major steps.
+\include{chapters/02a_distances}
+
+% Ch. 4 — Closed-form formulae for the distance sequences
+% ─────────────────────────────────────────────────────────
+\include{chapters/02b_distance_sequences}
+% ────────────────────────────────────────────────────────────
+\part{The Archimedean Spiral --- From Pattern to Curve}
+% ────────────────────────────────────────────────────────────
+%
+% The difference structure from Part I is interpreted
+% geometrically: block sums as circle circumferences, constant
+% radial difference, Archimedean spiral. The parametrisation
+% via p = k(n) connects the discrete sequence to the
+% continuous curve.
+%
+% CARRY-OVER TO PART III: Spiral parameter a = 6/π²,
+% parametrisation r(p) and θ(p), arc-length integral,
+% and the insight Δr = 12/π as the foundation of the cone slope.
+
+% Ch. 5 — From step sizes to circles and the spiral
+% ─────────────────────────────────────────────────────────
+% Proof of uniqueness of the pairing, circumferences U_m = 24m−5,
+% radius sequence, Archimedean spiral, connection to ζ(2).
+% Corresponds to: 03_spirale.tex
+\include{chapters/03_spiral}
+
+% Ch. 6 — Simplified parametrisation via p
+% ─────────────────────────────────────────────────────────
+% Why the angular parameter θ is not ideal, and how p = k(n)
+% produces an equidistant arc-length scale.
+\include{chapters/04_parametrisation}
+
+% Ch. 7 — The arc-length element of the spiral
+% ─────────────────────────────────────────────────────────
+% Derivation of the exact integral in the p-parametrisation.
+% Short chapter — forms the foundation for Ch. 8 and 9.
+\include{chapters/05_arc_length}
+
+% Ch. 8 — Arc length of the spiral: two methods compared
+% ─────────────────────────────────────────────────────────
+% Method A (θ-parametrisation, closed form with arcsinh)
+% vs. Method B (p-parametrisation, numerical integral).
+% Comparison shows: Δp ≈ arc length for large p.
+\include{chapters/05a_arc_length_spiral}
+
+% Ch. 9 — Arc length of the parabola as a periodic sequence
+% ─────────────────────────────────────────────────────────
+% Return to the quadratic curve k(n): exact arc length
+% between integer points as twin/gap sequence.
+\include{chapters/05b_arc_length_parabola}
+
+% Ch. 10 — Taylor expansion of the arc length
+% ─────────────────────────────────────────────────────────
+% Approximation formula: L ≈ Δp + (3/2π²)·ln(p₂/p₁) + ...
+% Convergence proof: arc length → Euclidean distance as p→∞.
+% Corresponds to: 06_taylor.tex
+\include{chapters/06_taylor}
+
+% ────────────────────────────────────────────────────────────
+\part{The Cone --- The Three-Dimensional Envelope}
+% ────────────────────────────────────────────────────────────
+%
+% The spiral from Part II is lifted into three-dimensional space.
+% The cone follows from Δr = 12/π and the 6-periodicity of the sequence.
+% The cone equation z = −3/4 + (π/2)r follows directly from
+% the vertex of the parabola.
+%
+% CARRY-OVER TO PART IV: Cone equation, half-angle
+% α = arctan(2/π), generator direction vectors,
+% height function z(θ) = −3/4 + (3/π)θ.
+
+% Ch. 11 — The conical form as the geometric envelope of the spiral
+% ─────────────────────────────────────────────────────────
+% Derivation of the cone equation from Δr and Δz=6,
+% proof that the helix lies on the cone surface.
+\include{chapters/07_cone}
+
+% Ch. 12 — Geometry of the cone generators
+% ─────────────────────────────────────────────────────────
+% Generators as rays, angles between them in space,
+% triangular planes, linear growth rate of radii.
+\include{chapters/14_cone_rays}
+
+% ────────────────────────────────────────────────────────────
+\part{The Conical Helix --- Complete Curve Analysis}
+% ────────────────────────────────────────────────────────────
+%
+% The helix as a complete geometric object:
+% parametrisation, arc length, velocity, curvature,
+% torsion, integer points. The main result: all
+% primes p > 3 appear as a discrete subset.
+%
+% CARRY-OVER TO PART V: θ_n = (π/3)n + π/4 as exact
+% angular formula, later explained algebraically via Q(k).
+
+% Ch. 13 — The conical helix: parametrisation and properties
+% ─────────────────────────────────────────────────────────
+% Complete curve analysis: γ(θ), derivative, velocity
+% ‖γ'(θ)‖, arc-length integral, curvature κ(θ), torsion τ(θ),
+% tangent vector, integer points θ_n.
+\include{chapters/08_helix}
+
+% Ch. 14 — Prime numbers on the helix
+% ─────────────────────────────────────────────────────────
+% Main result: all primes p > 3 lie as discrete
+% points on the helix. Proof, angular spacing pattern,
+% asymptotic density, comparison with the Ulam spiral.
+\include{chapters/08a_helix_primes}
+
+% Ch. 15 — Arc-length comparison: parabola vs. helix
+% ─────────────────────────────────────────────────────────
+% Numerical comparison of the arc lengths of both curves
+% over the same intervals. Convergence of the deviation
+% towards 0 for increasing n.
+\include{chapters/09_examples}
+
+% ────────────────────────────────────────────────────────────
+\part{The Direct Solution --- From Parabola to Helix}
+% ────────────────────────────────────────────────────────────
+%
+% The question: Can the helix be derived directly from the
+% parabola — without the detour through spiral and cone?
+% The answer is yes, and it leads to a single function:
+% Q(k) = √(48k+1), which encodes all geometric coordinates
+% of the helix algebraically.
+%
+% This part also shows: the journey of discovery was necessary,
+% not circuitous. Without it, Q(k) would not be understood.
+
+% Ch. 16 — Equidistant parametrisation and the quantity Q(k)
+% ─────────────────────────────────────────────────────────
+% Equidistant spiral points, √3 as common scaling factor,
+% fundamental identity (4n+3)² = 48k(n)+1,
+% exact inverse formula n(k) = (√(48k+1)−3)/4,
+% all helix quantities as functions of Q(k),
+% ODE characterisation of the height function,
+% exact helix parametrisation without intermediate steps.
+\include{chapters/13_visualisation}
+
+% Ch. 17 — The general construction scheme
+% ─────────────────────────────────────────────────────────
+% Generalisation: Which helices arise from other
+% functions? Classification by spiral type and surface of revolution.
+% The parabola as a distinguished special case (cone = const. dz/dr).
+\include{chapters/08b_parabola_helix}
+
+% ────────────────────────────────────────────────────────────
+%  CONCLUSION
+% ────────────────────────────────────────────────────────────
+
+% Ch. 18 — Summary and Outlook
+% ─────────────────────────────────────────────────────────
+% Overview of all main results, methodological significance,
+% open questions and further perspectives.
+\include{chapters/11_summary}
+
+% ────────────────────────────────────────────────────────────
+%  APPENDIX
+% ────────────────────────────────────────────────────────────
+
+\appendix
+
+% Appendix A — Formula Collection
+% ─────────────────────────────────────────────────────────
+% Compact overview of all central formulae of the work,
+% organised by subject area. Serves as a reference.
+\include{chapters/10_formula_collection}
+
+% Appendix B — Figures and Plots
+% ─────────────────────────────────────────────────────────
+% Gallery of all relevant figures at full size.
+% Corresponds to: 12_grafiken.tex
+% The figures in this chapter are already included in the
+% respective subject chapters, here at full page size.
+\include{chapters/12_figures}
+
+% Appendix C — Numerical Computations: Python Code
+% ─────────────────────────────────────────────────────────
+% Python code for reproducing all numerical values
+% (arc lengths, curvature, torsion, difference sequence).
+% Corresponds to: appendix.tex
+\include{chapters/appendix}
+
+% ────────────────────────────────────────────────────────────
+%  BIBLIOGRAPHY
+% ────────────────────────────────────────────────────────────
+
+\printbibliography[heading=bibintoc]
+% bibintoc: bibliography appears in the table of contents
+
+\end{document}

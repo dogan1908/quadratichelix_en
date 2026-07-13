@@ -1,0 +1,56 @@
+% ══════════════════════════════════════════════════════════════════════════
+% PART 1 — REMARK for chapters/04_parametrisation.tex,
+% insert directly after \end{remark} of rem:gamma_reflection
+% ══════════════════════════════════════════════════════════════════════════
+
+\begin{remark}[The two roles of $L(s,\chi_{-3})$: value and spectrum]
+\label{rem:L_two_roles}
+The function $L(s,\chi_{-3})$ of Remark~\ref{rem:eisenstein_L} enters
+the arithmetic of the classes $6k \pm 1$ a second time, through its
+zeros. The nontrivial character modulo~$6$ is induced by the primitive
+character $\chi_{-3}$ modulo~$3$, so that
+\begin{equation}
+  L(s,\chi_6) = L(s,\chi_{-3})\,\bigl(1 + 2^{-s}\bigr),
+\end{equation}
+and since the elementary factor $1 + 2^{-s}$ has no zeros in the
+critical strip, both functions possess the same nontrivial zeros
+(numerically, the lowest ones lie at
+$\gamma = 8.0397,\ 11.2492,\ 15.7046,\ 18.2620,\ 20.4558,\ \ldots$).
+By the explicit formulae of prime number theory~\cite{Davenport2000},
+these zeros govern the fluctuation of the prime counts \emph{between}
+the two residue classes: the combination
+$\pi(x; 6, 1) - \pi(x; 6, 5)$ is a superposition of oscillations
+$x^{\beta}\cos(\gamma \ln x)$ over the zeros $\beta + i\gamma$ of
+$L(s,\chi_{-3})$, and the generalised Riemann hypothesis is the
+statement that all these oscillations carry the minimal weight
+$\beta = \tfrac12$.
+
+The same $L$-function therefore acts on the present construction in
+two distinct roles: its \emph{value} at $s = 1$ fixes the angular
+factor of the parametrisation
+(Remark~\ref{rem:eisenstein_L}), while its \emph{zeros} form the
+frequency spectrum that modulates how the primes distribute themselves
+between the two strands parametrised by it. The first role is a proven
+identity; that the coincidence of the two roles carries structural
+content is an open question of this work.
+\end{remark}
+
+% ══════════════════════════════════════════════════════════════════════════
+% PART 2 — OUTLOOK ITEM for chapters/11_summary.tex,
+% insert after the item "Distribution-theoretic refinements"
+% (i.e. after "... which remains unsettled to this day.")
+% ══════════════════════════════════════════════════════════════════════════
+
+\item \textbf{Zeros of $\zeta$ as arc lengths:}
+  The arc-length parametrisation of Chapter~\ref{sec:parametrisierung}
+  permits placing the imaginary parts $\gamma_n$ of the nontrivial
+  zeros of $\zeta(s)$ on the spiral as marked points, with winding
+  number $\theta(\gamma_n)/2\pi = \sqrt{\gamma_n/12}$. A numerical
+  experiment with the first $200$ zeros shows their angular positions
+  $\theta(\gamma_n) \bmod 2\pi$ to be equidistributed (Weyl sums at or
+  below the $1/\sqrt{N}$ level; Kolmogorov--Smirnov statistic
+  $D = 0.049$ against a $5\%$ critical value of $0.096$): with respect
+  to this ruler the zeros behave angularly generically. Whether
+  deviations from equidistribution appear at larger $N$, for the
+  three-dimensional helix ruler, or for the zeros of $L(s,\chi_{-3})$
+  in place of $\zeta$, is open.

@@ -1,0 +1,619 @@
+\chapter{From Steps to the Archimedean Spiral}\label{sec:spirale}
+
+%═══════════════════════════════════════════════════════════════════════════
+\section{Geometric Motivation: From the Discrete Step Pattern to the
+Continuous Spiral}
+%═══════════════════════════════════════════════════════════════════════════
+
+\subsection{Starting Point and Guiding Question}
+
+In Chapter~\ref{sec:arithmetik} it was shown that the quadratic sequence
+\[
+  k(n) = \frac{2n^2 + 3n + 1}{6}
+\]
+takes integer values precisely for the index values $n \equiv 1, 5 \pmod{6}$.
+The resulting discrete point set
+\[
+  \mathcal{P} = \bigl\{(n,\, k(n)) \mid n \equiv 1, 5 \pmod{6},\ n \geq 1\bigr\}
+\]
+has a parabolic shape in Cartesian coordinates, since $k(n)$ is a polynomial
+of degree two in $n$. For the objective of this work --- the embedding of this
+discrete structure into a geometrically regular, three-dimensional space --- the
+Cartesian representation is, however, not suitable. It admits no natural
+periodisation, no angular structure, and it does not make the underlying modular
+regularity of the index $n$ geometrically visible.
+
+\begin{tcolorbox}[
+  title={Guiding question of this chapter},
+  colback=gray!5,
+  colframe=gray!50!black,
+  enhanced,
+  breakable
+]
+\emph{Does there exist a partition of the difference sequence of the
+sequence $k(n)$ into equally-sized blocks such that the resulting block
+sums can be interpreted as circumferences of concentric circles and the
+resulting radius sequence defines an Archimedean spiral with a closed-form
+slope constant? And if so: which block sizes admit it?}
+\end{tcolorbox}
+
+The answer, proved below: the block sums form an arithmetic progression
+precisely for the even block sizes, and $\ell = 2$ is the minimal
+admissible choice; combined with the circumference interpretation this
+determines the spiral completely.
+
+%─────────────────────────────────────────────────────────────────────────
+\subsection{The Difference Sequence of the Integer Values}
+\label{subsec:differenzstruktur}
+
+We denote by $(n_k)_{k \geq 1}$ the ascending sequence of all
+indices with $n_k \equiv 1, 5 \pmod{6}$:
+\[
+  n_1 = 1,\quad n_2 = 5,\quad n_3 = 7,\quad n_4 = 11,\quad
+  n_5 = 13,\quad n_6 = 17,\quad n_7 = 19,\quad n_8 = 23,\quad \ldots
+\]
+The corresponding function values (integer values of the sequence) are:
+\[
+  p_k = k(n_k)\colon\quad 1,\ 11,\ 20,\ 46,\ 63,\ 105,\ 130,\ 188,\ 221,\ldots
+\]
+We define the \emph{first difference sequence} of this value sequence:
+\[
+  \delta_k = p_{k+1} - p_k = k(n_{k+1}) - k(n_k),\qquad k \geq 1.
+\]
+The first terms of this difference sequence are:
+\[
+  \delta_1 = 10,\quad \delta_2 = 9,\quad \delta_3 = 26,\quad
+  \delta_4 = 17,\quad \delta_5 = 42,\quad \delta_6 = 25,\quad
+  \delta_7 = 58,\quad \delta_8 = 33,\quad \ldots
+\]
+
+\begin{remark}[Alternating growth of the differences]
+The difference sequence $(\delta_k)$ exhibits a clear alternating pattern:
+\begin{itemize}
+  \item The terms at \emph{odd} positions ($\delta_1, \delta_3, \delta_5, \ldots$)
+        take the values $10, 26, 42, 58, \ldots$ and form an arithmetic subsequence
+        with common difference $16$.
+  \item The terms at \emph{even} positions ($\delta_2, \delta_4, \delta_6, \ldots$)
+        take the values $9, 17, 25, 33, \ldots$ and form an arithmetic subsequence
+        with common difference $8$.
+\end{itemize}
+This pattern directly reflects the alternation of the index differences
+$n_{k+1} - n_k$, which alternate between $\Delta n = 4$ (for
+$n_k \equiv 1 \pmod{6}$, \emph{major steps}) and $\Delta n = 2$ (for
+$n_k \equiv 5 \pmod{6}$, \emph{minor steps}).
+\end{remark}
+
+%─────────────────────────────────────────────────────────────────────────
+\subsection{The Block-Formation Problem and Its Solution}
+\label{subsec:gruppenbildung}
+
+We pose the following algebraic question: which partition of the
+difference sequence $(\delta_k)$ into consecutive, equally-sized blocks
+of length $\ell \in \{1, 2, 3, \ldots\}$ produces a sequence of block
+sums that forms an \emph{arithmetic progression}?
+
+Formally, for a block size $\ell \geq 1$ we define the sequence of
+block sums
+\[
+  S_m^{(\ell)} = \sum_{j=1}^{\ell} \delta_{\ell(m-1)+j},\qquad m \geq 1,
+\]
+and ask: for which values of $\ell$ is $(S_m^{(\ell)})_{m \geq 1}$
+an arithmetic sequence?
+
+\begin{theorem}[Even block sizes and minimality of the pairing]\label{satz:eindeutigkeit}
+The sequence of block sums $(S_m^{(\ell)})_{m \geq 1}$ is an arithmetic
+progression if and only if $\ell$ is even. For $\ell = 2m$ the common
+difference is
+\[
+  S_{i+1}^{(\ell)} - S_i^{(\ell)} = 24m^2 = 6\ell^2 .
+\]
+In particular, $\ell = 2$ is the minimal admissible block size, with
+common difference $24$.
+\end{theorem}
+
+\begin{proof}
+By Theorem~\ref{satz:minor_major_formeln} the difference sequence is
+$\delta_{2t-1} = 16t - 6$ (major) and $\delta_{2t} = 8t + 1$ (minor).
+
+\textbf{Even $\ell = 2m$:} shifting an index by $\ell$ preserves its
+parity and advances the period counter $t$ by $m$, so
+\[
+  \delta_{j+\ell} - \delta_j =
+  \begin{cases}
+    16m, & j \text{ odd},\\
+    8m,  & j \text{ even}.
+  \end{cases}
+\]
+Each block of length $2m$ contains exactly $m$ odd and $m$ even indices;
+hence
+\[
+  S_{i+1}^{(\ell)} - S_i^{(\ell)}
+  = \sum_{j \in \text{Block}_i} \bigl(\delta_{j+\ell} - \delta_j\bigr)
+  = m \cdot 16m + m \cdot 8m = 24m^2 = 6\ell^2,
+\]
+independent of $i$: the block sums form an arithmetic progression.
+
+\textbf{Odd $\ell$:} now $j$ and $j+\ell$ have opposite parity. Writing
+$\ell = 2m+1$, a direct computation from the two closed formulae gives
+\[
+  \delta_{j+\ell} - \delta_j =
+  \begin{cases}
+    -8t + 4\ell + 3, & j = 2t-1 \text{ odd},\\
+    \phantom{-}8t + 8\ell + 1, & j = 2t \text{ even}.
+  \end{cases}
+\]
+Since $\ell$ is odd, the parity of the first index of $\text{Block}_i$
+alternates with $i$, so consecutive blocks contain the two term types in
+the ratios $(m{+}1) : m$ and $m : (m{+}1)$ alternately. Summing over a
+block yields
+\[
+  S_{i+1}^{(\ell)} - S_i^{(\ell)} = 6\ell^2 + (-1)^i\,(4\ell i + 3),
+\]
+an expression whose deviation from $6\ell^2$ alternates in sign and grows
+without bound; $(S_m^{(\ell)})$ is therefore not an arithmetic
+progression for any odd $\ell$. The minimality of $\ell = 2$ among the
+even block sizes is immediate.
+\end{proof}
+
+\begin{remark}[Numerical illustration]
+For $\ell = 2$: sums $19, 43, 67, 91$ with constant difference $24$.
+For $\ell = 4$: sums $62, 158, 254, 350$ with constant difference
+$96 = 6 \cdot 4^2$. For $\ell = 3$: sums $45, 84, 165$ with differences
+$39, 81$ --- not arithmetic, in accordance with the closed form
+$6\ell^2 + (-1)^i(4\ell i + 3) = 54 + (-1)^i(12i+3)$.
+\end{remark}
+
+\begin{remark}[Connection to the OEIS]
+	The sequence of circumferences $U_m = 24m - 5$ is listed in the OEIS
+	under A350051~\cite{OEIS} as part of the trisection of
+	$A017101 = \{3 + 8k\}_{k \geq 0}$. It is congruent to
+	$1 \pmod{6}$ --- in agreement with the congruence structure
+	of the sequence $k(n)$.
+\end{remark}
+
+\begin{remark}[Compatibility of the minimal pairing]
+Every even block size yields an arithmetic progression
+(Theorem~\ref{satz:eindeutigkeit}); the pairing $\ell = 2$ is
+distinguished twice over. It is minimal, and it is the only even block
+size compatible with the angular assignment of the construction: one
+block then comprises exactly one major and one minor step, i.e.\ the six
+index units $\Delta n = 6$ of a full period, which Chapter~\ref{ch:helix}
+maps to one full revolution $\Delta\theta = 2\pi$.
+\end{remark}
+
+%─────────────────────────────────────────────────────────────────────────
+\subsection{Geometric Interpretation of the Block Sums as Circumferences}
+\label{subsec:geometrische_interpretation}
+
+Having established that the pairwise block sums $S_m^{(2)} = 24m - 5$ form
+an arithmetic progression, we now present the decisive geometric argument.
+
+An Archimedean spiral $r(\varphi) = a\varphi$ has the defining
+property of \emph{constant radial difference}: for each complete
+revolution $\Delta\varphi = 2\pi$ one has
+\[
+  \Delta r = 2\pi a = \text{const}.
+\]
+Equivalently: the circumferences $U_m = 2\pi R_m$ of successive
+spiral windings themselves form an arithmetic progression with constant
+difference $\Delta U = 2\pi \Delta R$.
+\clearpage
+
+\begin{tcolorbox}[
+  title={Justification of the circumference identification},
+  colback=blue!3,
+  colframe=blue!40!black,
+  enhanced,
+  breakable
+]
+The integer points of the sequence $k(n)$ admit a polar arrangement in
+which the two residue classes occupy fixed angular directions: points
+with $n_k \equiv 1 \pmod{6}$ along one ray, points with
+$n_k \equiv 5 \pmod{6}$ along another (made precise by the twin zones of
+Chapter~\ref{ch:helix}). This suggests interpreting each pair of
+consecutive steps --- one major and one minor --- as a complete
+\emph{period} of the arrangement, corresponding to one winding.
+
+Under this interpretation the sum of the increments within a period
+corresponds to the circumference increment of a circle. The
+identification itself is a definition
+(Definition~\ref{def:kreisumfaenge}); Theorem~\ref{satz:eindeutigkeit}
+then shows that the even pairings --- minimally $\ell = 2$ --- are
+exactly those for which the sums grow arithmetically. This is the
+algebraic statement that the identification is \emph{consistent}: with
+the minimal pairing a spiral with \emph{constant} winding spacing
+arises, and its consequences are forced, as the following sections show.
+\end{tcolorbox}
+
+\begin{definition}[Circumferences of the sequence]\label{def:kreisumfaenge}
+We identify the pairwise block sums of the difference sequence
+with the circumferences of a family of concentric circles:
+\[
+  U_m \coloneqq S_m^{(2)} = \delta_{2m-1} + \delta_{2m} = 24m - 5.
+\]
+\end{definition}
+
+\begin{remark}[Classification by placement rule]\label{rem:placement_classification}
+The circumference reading is one of several possible geometric
+interpretations of the arithmetic data, and the choice classifies the
+resulting picture --- not by curve type, but by the \emph{placement map}
+$n \mapsto (r, \theta)$. Reading the linear block sums as circumferences
+gives $r \propto m$: a constant occupation of six integer points per
+winding, the construction of this work. Reading cumulative \emph{counts}
+as areas gives $r \propto \sqrt{N}$: the placement of the Sacks
+spiral~\cite{Sacks2003}, which carries all integers with $2n+1$ points
+on the $n$-th winding --- its underlying curve is likewise Archimedean;
+only the occupation density grows. A root radius combined with a
+\emph{linear} angle ($r \propto \sqrt{n}$, $\theta \propto n$) yields
+the Fermat spiral of Vogel's phyllotaxis model. Within the linear
+branch, the circumference is singled out among the quantities
+proportional to $R$ by a dimensional property: it is the one choice for
+which the block sum has the same meaning as the quantity it is
+identified with --- the length traversed per revolution, exactly for the
+circle and to leading order for the spiral
+(Chapter~\ref{sec:bogenlaenge_spirale}).
+\end{remark}
+
+%═══════════════════════════════════════════════════════════════════════════
+\section{Derivation of the Major and Minor Step Formulae}
+\label{sec:minor_major_herleitung}
+%═══════════════════════════════════════════════════════════════════════════
+
+\subsection{Explicit Computation of the Step Sizes}
+
+We derive the closed-form formulae for the major and minor step sizes
+directly from the definition of $k(n)$.
+
+The closed-form step formulae were established arithmetically in
+Chapter~\ref{sec:arithmetik} (Theorem~\ref{satz:minor_major_formeln},
+Definition~\ref{def:minor_major}):
+\[
+  \Delta_{\mathrm{Major}}(m) = 16m - 6,\qquad
+  \Delta_{\mathrm{Minor}}(m) = 8m + 1.
+\]
+The first periods:
+\begin{table}[htbp]
+\centering
+\caption{Step sizes of the first periods}
+\begin{tabular}{c|cc|cc|c}
+\toprule
+Period $m$ & Starting value $n$ & $\Delta_{\mathrm{Major}}$ &
+Intermediate value $n$ & $\Delta_{\mathrm{Minor}}$ & $U_m$ \\
+\midrule
+1 & 1  & 10 & 5  & 9  & 19 \\
+2 & 7  & 26 & 11 & 17 & 43 \\
+3 & 13 & 42 & 17 & 25 & 67 \\
+4 & 19 & 58 & 23 & 33 & 91 \\
+5 & 25 & 74 & 29 & 41 & 115 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{remark}[Verification of the formulae]
+For $m=1$: $\Delta_{\mathrm{Major}}(1) = 16\cdot1 - 6 = 10$,
+$\Delta_{\mathrm{Minor}}(1) = 8\cdot1 + 1 = 9$.
+For $m=2$: $\Delta_{\mathrm{Major}}(2) = 32-6 = 26$,
+$\Delta_{\mathrm{Minor}}(2) = 17$. The formulae match the computed differences.
+\end{remark}
+
+\subsection{The Unified Generator Function}
+
+The two subsequences can be combined into a single formula
+that generates all steps of the interleaved sequence $(\delta_k)$.
+
+\begin{theorem}[Closed-form generator of the difference sequence]
+The complete difference sequence $(\delta_k)_{k \geq 1}$ in its natural
+order starting from $n = 1$:
+\[
+  \delta_1 = 10,\; \delta_2 = 9,\; \delta_3 = 26,\; \delta_4 = 17,\;
+  \delta_5 = 42,\; \delta_6 = 25,\; \delta_7 = 58,\; \delta_8 = 33,\; \ldots
+\]
+(\textbf{major, minor, major, minor, \ldots}) is generated by the closed-form
+formula
+\begin{equation}
+  a_k = \frac{1}{2}\bigl[(12k+3) + (-1)^{k+1}(4k+1)\bigr],
+  \qquad k \geq 1,
+\end{equation}
+where $a_1 = 10$ corresponds to the first major step (from $n_1 = 1$ to
+$n_2 = 5$).
+\end{theorem}
+
+\begin{proof}
+For $k = 2m-1$ (odd positions, major steps):
+\begin{align*}
+  a_{2m-1}
+  &= \frac{1}{2}\bigl[(12(2m-1)+3) + (-1)^{2m}(4(2m-1)+1)\bigr] \\
+  &= \frac{1}{2}\bigl[(24m-9) + (8m-3)\bigr]
+  = \frac{32m-12}{2} = 16m-6.
+\end{align*}
+This is exactly $\Delta_{\mathrm{Major}}(m) = 16m-6$. \quad
+Check: $a_1 = 16\cdot1-6 = 10$. \checkmark
+
+For $k = 2m$ (even positions, minor steps):
+\begin{align*}
+  a_{2m}
+  &= \frac{1}{2}\bigl[(12(2m)+3) + (-1)^{2m+1}(4(2m)+1)\bigr] \\
+  &= \frac{1}{2}\bigl[(24m+3) - (8m+1)\bigr]
+  = \frac{16m+2}{2} = 8m+1.
+\end{align*}
+This is exactly $\Delta_{\mathrm{Minor}}(m) = 8m+1$. \quad
+Check: $a_2 = 8\cdot1+1 = 9$. \checkmark
+
+The period sums remain identical:
+\[
+  U_m = a_{2m-1} + a_{2m}
+      = (16m-6) + (8m+1)
+      = 24m - 5. \qquad\checkmark
+\]
+\end{proof}
+
+%═══════════════════════════════════════════════════════════════════════════
+\section{From Steps to Circumferences}
+%═══════════════════════════════════════════════════════════════════════════
+
+The step notation $\Delta_{\mathrm{Minor},m}$, $\Delta_{\mathrm{Major},m}$ was introduced in Definition~\ref{def:minor_major}.
+
+By Definition~\ref{def:kreisumfaenge}, one major and one minor step
+together form the $m$-th circumference; by
+Theorem~\ref{satz:eindeutigkeit} (case $\ell = 2$),
+\begin{equation}
+  U_m = \Delta_{\mathrm{Major},m} + \Delta_{\mathrm{Minor},m}
+      = (16m-6) + (8m+1) = 24m - 5,
+  \qquad U_{m+1} - U_m = 24.
+\end{equation}
+
+%═══════════════════════════════════════════════════════════════════════════
+\section{Radius Sequence}
+%═══════════════════════════════════════════════════════════════════════════
+
+From the circumferences the radius sequence follows via $U_m = 2\pi R_m$:
+\begin{equation}
+  R_m = \frac{U_m}{2\pi} = \frac{24m - 5}{2\pi}.
+\end{equation}
+
+\begin{theorem}[Constant radius difference --- key result]
+\begin{equation}
+  \boxed{\Delta R = R_{m+1} - R_m = \frac{24}{2\pi} = \frac{12}{\pi}
+  \approx 3.819718634205}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Direct computation:
+\[
+  R_{m+1} - R_m
+  = \frac{24(m+1)-5}{2\pi} - \frac{24m-5}{2\pi}
+  = \frac{24}{2\pi}
+  = \frac{12}{\pi}.
+\]
+\end{proof}
+
+%═══════════════════════════════════════════════════════════════════════════
+\section{Archimedean Spiral}
+%═══════════════════════════════════════════════════════════════════════════
+
+\begin{definition}
+An \emph{Archimedean spiral} is a plane curve in polar coordinates
+of the form
+\[
+  r(\theta) = a\theta,
+\]
+with slope constant $a > 0$. The characterising property of this
+class of curves is the constant radial difference between successive
+windings: for each complete revolution $\Delta\theta = 2\pi$,
+\[
+  \Delta r = r(\theta + 2\pi) - r(\theta) = 2\pi a.
+\]
+\end{definition}
+
+The minimality of the pairing proved in Theorem~\ref{satz:eindeutigkeit}
+and the resulting constant $\Delta R = 12/\pi$ determine
+the slope constant $a$:
+\begin{align}
+  2\pi a &= \Delta R = \frac{12}{\pi},\\[4pt]
+  a &= \frac{12}{2\pi^2} = \frac{6}{\pi^2}.
+\end{align}
+
+\begin{theorem}[Spiral equation]
+\begin{equation}
+  \boxed{
+    r(\theta) = \frac{6}{\pi^2}\,\theta
+    \approx 0.607927101854 \cdot \theta
+  }
+\end{equation}
+\end{theorem}
+
+\begin{remark}[Connection to the Basel problem]
+The slope constant
+\[
+  a = \frac{6}{\pi^2} = \frac{1}{\zeta(2)},
+  \qquad
+  \zeta(2) = \sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}
+\]
+is the reciprocal of the Riemann zeta function at $s=2$, i.e.\ the
+solution of the classical Basel problem. The value $\zeta(2) = \pi^2/6$
+was proved by Leonhard Euler (published 1740)~\cite{Euler1740,Hardy2008}. The fact
+that the spiral constant, obtained from purely combinatorial-arithmetic
+considerations on the difference structure of the sequence $k(n)$,
+coincides with $1/\zeta(2)$ is a structural identity.
+\end{remark}
+
+\begin{remark}[The spiral constant as the mean coprimality density]
+\label{rem:euler_coprimality}
+The coincidence of the spiral constant $a = 6/\pi^2$ with the reciprocal
+of $\zeta(2)$ carries a deeper number-theoretic meaning that extends well
+beyond the Basel problem.
+
+A classical result of analytic number theory states that the average
+behaviour of Euler's $\varphi$-function satisfies
+\begin{equation}\label{eq:euler_mean}
+  \frac{1}{x}\sum_{n \leqslant x} \frac{\varphi(n)}{n}
+  \;\longrightarrow\; \frac{6}{\pi^2}
+  \qquad (x \to \infty)
+\end{equation}
+(see, e.g.,~\cite{Hardy2008}).
+The ratio $\varphi(n)/n = \prod_{p \mid n}(1 - 1/p)$ measures the
+\emph{proportion of integers up to~$n$ that are coprime to~$n$}.
+The limit $6/\pi^2$ is therefore the \emph{mean coprimality density}
+of the natural numbers: if one draws a random pair $(a,n)$ with
+$1 \leqslant a \leqslant n$, the probability that $\gcd(a,n) = 1$
+is asymptotically equal to $6/\pi^2$.
+
+The spiral constant of the present work thus admits three simultaneous
+interpretations:
+\begin{enumerate}
+\item $1/\zeta(2)$ — the reciprocal of the series $\sum 1/n^2$
+      \emph{(Basel problem, Euler 1734)};
+\item the mean coprimality density $\overline{\varphi(n)/n}$
+      \emph{(summatory number theory)};
+\item the slope~$a$ of the Archimedean spiral, which follows
+      \emph{uniquely} from the difference structure of~$k(n)$
+      \emph{(present work)}.
+\end{enumerate}
+
+This threefold connection is not coincidental: the sequence $k(n)$
+takes integer values precisely when $n \equiv 1,5\pmod{6}$, that is,
+for those~$n$ that are coprime to~$6$. The proportion of these
+congruence classes is $\varphi(6)/6 = 2/6 = 1/3$, and the spiral
+constant $a = 6/\pi^2$ encodes, in a sense, the \emph{universal
+extension} of this local coprimality ratio to all primes simultaneously.
+\end{remark}
+
+\begin{remark}[Distribution function of the error term and the
+Erd\H{o}s--Shapiro theorem]
+\label{rem:erdos_shapiro}
+Erd\H{o}s and Shapiro~\cite{ErdosShapiro1955} studied the error function
+\begin{equation}\label{eq:H_erdos}
+  H(x) = \sum_{n \leqslant x} \frac{\varphi(n)}{n}
+         - \frac{6}{\pi^2}\,x,
+\end{equation}
+which measures the deviation of the cumulative values of $\varphi(n)/n$
+from the linear main term $6x/\pi^2$. Their principal result is that
+$H(x)$ possesses a \emph{continuous distribution function}: writing
+$N(n,u) = \#\{m \leqslant n : H(m) \geqslant u\}$, the limit
+\[
+  F(u) = \lim_{n \to \infty} \frac{N(n,u)}{n}
+\]
+exists for every~$u$, and $F$ is continuous.
+
+This result is relevant to the present work for two reasons:
+\begin{enumerate}
+\item The constant $6/\pi^2$ about which~$H(x)$ oscillates is
+      \emph{exactly} the spiral constant~$a$. The Erd\H{o}s--Shapiro
+      theorem shows that the fluctuations around this main term are
+      statistically regular — the coprimality density is thus robust
+      not only on average, but also in a probabilistic sense.
+\item The existence and continuity of the distribution function of~$H(x)$
+      relies crucially on the continuity of the distribution function
+      of $\varphi(n)/n$ itself (Erd\H{o}s--Wintner~\cite{ErdosWintner1939}).
+      The primes $p > 3$ satisfy $\varphi(p)/p = 1 - 1/p \to 1$ and
+      therefore cluster at the upper end of this distribution. On the
+      conical helix they appear as a geometrically distinguished
+      subset — the statistical distribution of $\varphi(n)/n$ thereby
+      acquires a spatial interpretation.
+\end{enumerate}
+
+The present construction thus \emph{geometrises} an arithmetic
+quantity whose statistical fine structure has been the subject of
+deep analytic investigations~\cite{ErdosShapiro1955,
+Erdos1974distribution, ErdosHall1973}.
+\end{remark}
+
+\begin{remark}[Visible lattice points and squarefree numbers]
+\label{rem:visible_squarefree}
+Two further classical interpretations of the constant $6/\pi^2$ deserve
+mention, since both are geometric in nature and thus close to the spirit
+of the present construction (see~\cite{Hardy2008}).
+
+First, a lattice point $(x,y) \in \mathbb{Z}^2$ is called \emph{visible}
+from the origin if no other lattice point lies on the open segment
+between the origin and $(x,y)$; this holds precisely when
+$\gcd(x,y)=1$. The density of visible points among all lattice points is
+\begin{equation}
+  \lim_{R \to \infty}
+  \frac{\#\{(x,y) : \|(x,y)\| \leqslant R,\ \gcd(x,y)=1\}}
+       {\#\{(x,y) : \|(x,y)\| \leqslant R\}}
+  = \frac{6}{\pi^2}.
+\end{equation}
+
+Second, the density of the squarefree integers is likewise
+\begin{equation}
+  \lim_{x \to \infty} \frac{\#\{n \leqslant x : n \text{ squarefree}\}}{x}
+  = \prod_{p} \Bigl(1 - \frac{1}{p^2}\Bigr)
+  = \frac{1}{\zeta(2)} = \frac{6}{\pi^2},
+\end{equation}
+where the Euler product on the left is term by term the same product
+that yields the spiral constant~$a$ in the present work.
+
+The list of interpretations of the slope~$a$ thus extends to five: the
+reciprocal of $\zeta(2)$, the mean coprimality density
+(Remark~\ref{rem:euler_coprimality}), the density of visible lattice
+points, the density of squarefree integers, and the slope of the
+Archimedean spiral derived here. The visible-point interpretation is
+noteworthy in the present context because it is itself a statement about
+straight lines through integer points of the plane --- the same
+raw material from which the spiral is built. Whether this analogy can be
+made structural is an open question of this work, not an established
+result.
+\end{remark}
+
+\begin{remark}[Farey fractions and the Franel--Landau criterion]
+\label{rem:farey_franel}
+The Farey sequence $F_N$ consists of all reduced fractions in $[0,1]$
+with denominator at most~$N$. Its cardinality satisfies
+\begin{equation}\label{eq:farey_count}
+  |F_N| = 1 + \sum_{n \leqslant N} \varphi(n)
+        \;\sim\; \frac{3}{\pi^2}\,N^2
+        \;=\; \frac{a}{2}\,N^2 ,
+\end{equation}
+with the same coefficient $a/2$ that appears in the arc-length
+asymptotics $s(\theta) \approx \tfrac{a}{2}\theta^2$ of the spiral
+(Chapter~\ref{sec:bogenlaenge_spirale}). Both statements are counting
+results governed by the mean of $\varphi$; the identical quadratic
+form is recorded here as a formal correspondence, without a claim
+that the two counts measure the same quantity.
+
+The connection to the Riemann zeta function is provided by the
+Franel--Landau criterion~\cite{Franel1924, Landau1924}: writing
+$f_1 < f_2 < \cdots < f_{|F_N|}$ for the elements of $F_N$ and
+$\delta_j = f_j - j/|F_N|$ for their deviations from perfect
+equidistribution, the Riemann hypothesis is \emph{equivalent} to
+\begin{equation}
+  \sum_{j=1}^{|F_N|} |\delta_j| = O\bigl(N^{1/2+\varepsilon}\bigr)
+  \qquad \text{for every } \varepsilon > 0.
+\end{equation}
+The quality of the equidistribution of the reduced fractions --- the
+same arithmetic objects whose count carries the coefficient $a/2$ ---
+therefore encodes the position of the nontrivial zeros of
+$\zeta(s)$.
+\end{remark}
+
+\begin{remark}[Mertens' theorem and the Euler--Mascheroni constant]
+\label{rem:mertens_gamma}
+The spiral constant is the convergent second-power Euler product
+$a = \prod_p (1 - p^{-2})$. Its first-power counterpart does not
+converge to a positive limit; instead, Mertens'
+theorem~\cite{Mertens1874} states
+\begin{equation}\label{eq:mertens}
+  \prod_{p \leqslant x} \Bigl(1 - \frac{1}{p}\Bigr)
+  \;\sim\; \frac{e^{-\gamma}}{\ln x}
+  \qquad (x \to \infty),
+\end{equation}
+where $\gamma = 0.5772156649\ldots$ is the Euler--Mascheroni constant.
+The partial product on the left is the density of integers free of
+prime factors $\leqslant x$; for $x = 3$ it equals
+$(1-\tfrac12)(1-\tfrac13) = \tfrac13 = \varphi(6)/6$, the local
+coprimality ratio of the congruence classes $n \equiv 1,5 \pmod 6$ on
+which the sequence $k(n)$ is integer-valued.
+
+The two products thus continue the same local datum in two different
+ways: with squared factors the product converges and yields the spiral
+constant~$a$; with first powers it decays logarithmically, and
+$\gamma$ is the constant that calibrates this decay. The constant
+$\gamma$ is tied to $\zeta$ at its pole through the Laurent expansion
+$\zeta(s) = \frac{1}{s-1} + \gamma + O(s-1)$, while $a$ evaluates
+$1/\zeta$ at $s = 2$; the pair $(\gamma, a)$ therefore probes the same
+function at its two arithmetically distinguished points.
+\end{remark}
+
+

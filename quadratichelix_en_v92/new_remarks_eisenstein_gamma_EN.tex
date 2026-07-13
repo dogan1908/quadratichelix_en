@@ -1,0 +1,80 @@
+% ══════════════════════════════════════════════════════════════════════════
+% NEW REMARKS — insert after the Cartesian parametric representation
+% (equations x(p), y(p)) in chapters/04_parametrisation.tex,
+% before \section{Derivatives}
+% ══════════════════════════════════════════════════════════════════════════
+
+\begin{remark}[The angular factor as a Dirichlet $L$-value:
+Eisenstein integers]
+\label{rem:eisenstein_L}
+The angular factor $\pi/\sqrt{3}$ of the $p$-parametrisation admits an
+exact expression through a Dirichlet $L$-function. Let $\chi_{-3}$ be
+the nontrivial character modulo~$3$, i.e.\ $\chi_{-3}(n) = +1$ for
+$n \equiv 1 \pmod 3$, $-1$ for $n \equiv 2 \pmod 3$, and $0$ for
+$3 \mid n$. Its $L$-series at $s=1$,
+\begin{equation}\label{eq:L_chi3}
+  L(1,\chi_{-3})
+  = 1 - \frac12 + \frac14 - \frac15 + \frac17 - \frac18 + \cdots
+  = \frac{\pi}{3\sqrt{3}},
+\end{equation}
+is a classical evaluation; by Dirichlet's class number formula it reads
+$L(1,\chi_{-3}) = 2\pi h / (w\sqrt{|d|})$ with class number $h = 1$,
+discriminant $d = -3$ and $w = 6$ units for the field
+$\mathbb{Q}(\sqrt{-3})$~\cite{IrelandRosen1990}. Hence
+\begin{equation}\label{eq:angular_L}
+  \frac{\pi}{\sqrt{3}} = 3\,L(1,\chi_{-3}) = \frac{w}{2}\,L(1,\chi_{-3}),
+  \qquad
+  \theta(p) = \frac{w}{2}\,L(1,\chi_{-3})\,\sqrt{p}.
+\end{equation}
+
+The ring of integers of $\mathbb{Q}(\sqrt{-3})$ is the ring of
+Eisenstein integers $\mathbb{Z}[\omega]$, $\omega = e^{2\pi i/3}$ ---
+the hexagonal lattice, whose unit group has order exactly~$6$. Its
+arithmetic is organised by the same congruence classes as the present
+work: a rational prime $p > 3$ splits in $\mathbb{Z}[\omega]$ if
+$p \equiv 1 \pmod 3$ and remains inert if $p \equiv 2 \pmod 3$, while
+$p = 3$ ramifies. For odd $n$, the classes $n \equiv 1, 5 \pmod 6$ on
+which $k(n)$ is integer-valued are precisely the classes
+$n \equiv 1, 2 \pmod 3$, so the two strands of the twin structure
+correspond to the two splitting types. The associated Dedekind zeta
+function factorises as
+$\zeta_{\mathbb{Q}(\sqrt{-3})}(s) = \zeta(s)\,L(s,\chi_{-3})$.
+
+It should be stated clearly what is established and what is not: the
+identities \eqref{eq:L_chi3}--\eqref{eq:angular_L} are exact, and the
+correspondence between the residue classes and the splitting law in
+$\mathbb{Z}[\omega]$ is classical algebraic number theory. That the
+angular factor of the spiral is forced to be this particular $L$-value
+--- rather than merely equal to it through the shared origin of both
+quantities in the modulus~$6$ --- is a conjecture of the present work
+and remains open.
+\end{remark}
+
+\begin{remark}[The angular factor and the reflection formula of the
+Gamma function]
+\label{rem:gamma_reflection}
+Euler's reflection formula
+$\Gamma(z)\Gamma(1-z) = \pi/\sin(\pi z)$ yields at $z = \tfrac13$
+\begin{equation}\label{eq:gamma_reflection}
+  \Gamma\!\left(\tfrac13\right)\Gamma\!\left(\tfrac23\right)
+  = \frac{\pi}{\sin(\pi/3)}
+  = \frac{2\pi}{\sqrt{3}},
+  \qquad\text{hence}\qquad
+  \frac{\pi}{\sqrt{3}}
+  = \frac{1}{2}\,\Gamma\!\left(\tfrac13\right)\Gamma\!\left(\tfrac23\right).
+\end{equation}
+The arguments $\tfrac13$ and $\tfrac23$ are the two residue classes
+modulo~$3$ --- normalised to the unit interval --- that carry the twin
+structure of $k(n)$; the angular factor is one half of the product of
+the Gamma values at exactly these two points.
+
+The appearance of $\sqrt{3}$ in \eqref{eq:gamma_reflection} and in the
+$L$-value of Remark~\ref{rem:eisenstein_L} is not independent: the
+Chowla--Selberg formula~\cite{ChowlaSelberg1967} expresses the periods
+attached to the imaginary quadratic field $\mathbb{Q}(\sqrt{-3})$ in
+terms of $\Gamma(\tfrac13)$, so that the $L$-value and the
+Gamma product are two evaluations rooted in the same field. Within the
+present work these identities are recorded as structure shared with
+the parametrisation constants; no derivation of the spiral from either
+side is claimed.
+\end{remark}
